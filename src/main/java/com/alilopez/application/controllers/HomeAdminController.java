@@ -53,8 +53,9 @@ public class HomeAdminController {
     }
 
     @FXML
-    void onClickUsuarioButton(MouseEvent event) {
-
+    void onClickUsuarioButton(MouseEvent event) throws IOException {
+        App escena = new App();
+        escena.changeScene("usuarios-view.fxml");
     }
 
     @FXML

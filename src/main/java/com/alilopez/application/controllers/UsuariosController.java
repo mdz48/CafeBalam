@@ -20,22 +20,22 @@ public class UsuariosController {
     private TableView<Usuario> usuariosTable;
 
     @FXML
-    private TableColumn<Cliente, String> colId;
+    private TableColumn<Usuario, String> colId;
 
     @FXML
     private Button addButton;
 
     @FXML
-    private TableColumn<Cliente, String> colApellido;
+    private TableColumn<Usuario, String> colApellido;
 
     @FXML
     private Button buscarButton;
 
     @FXML
-    private TableColumn<Cliente, Integer> colEdad;
+    private TableColumn<Usuario, Integer> colEdad;
 
     @FXML
-    private TableColumn<Cliente, String> colCorreo;
+    private TableColumn<Usuario, String> colCorreo;
 
     @FXML
     private Button editarButton;
@@ -44,10 +44,10 @@ public class UsuariosController {
     private Button exitButton;
 
     @FXML
-    private TableColumn<Cliente, String> colCargo;
+    private TableColumn<Usuario, String> colCargo;
 
     @FXML
-    private TableColumn<Cliente, String> colNombre;
+    private TableColumn<Usuario, String> colNombre;
 
     @FXML
     private Button removeButton;
