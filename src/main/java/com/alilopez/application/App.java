@@ -1,5 +1,6 @@
 package com.alilopez.application;
 
+import com.alilopez.application.models.Tienda;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,16 +14,21 @@ import java.io.IOException;
 public class App extends javafx.application.Application {
     private static Stage stageView;
     private static Stage stageRoot;
+    private static Tienda tienda = new Tienda();
     @Override
     public void start(Stage stage) throws IOException {
         stageRoot = stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("home-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("homeAdmin-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         stage.setTitle("NameApplication - Home");
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.show();
+    }
+    public void changeScene(String fxml) throws IOException {
+        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
+        stageRoot.getScene().setRoot(pane);
     }
 
     public static void newStage(String fxml, String title) {
@@ -54,5 +60,8 @@ public class App extends javafx.application.Application {
     public static void main(String[] args) {
         launch();
         System.exit(1);
+    }
+    public static Tienda getTienda() {
+        return tienda;
     }
 }

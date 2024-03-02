@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alilopez.application.controllers.UsuariosController">
+   <children>
+      <TableView fx:id="productosTable" layoutX="107.0" layoutY="209.0" prefHeight="498.0" prefWidth="954.0">
+        <columns>
+          <TableColumn fx:id="colNombre" prefWidth="125.0" text="Nombre" />
+            <TableColumn fx:id="colTipo" prefWidth="120.0" text="Tipo" />
+            <TableColumn fx:id="colCosto" prefWidth="115.0" text="Costo" />
+            <TableColumn fx:id="colPrecio" prefWidth="136.0" text="Precio" />
+          <TableColumn fx:id="colCantidad" minWidth="0.0" prefWidth="122.0" text="Cantidad" />
+            <TableColumn fx:id="colPeso" prefWidth="109.0" text="Peso" />
+            <TableColumn fx:id="colID" prefWidth="226.0" text="ID" />
+        </columns>
+      </TableView>
+      <AnchorPane layoutX="521.0" layoutY="73.0" prefHeight="86.0" prefWidth="643.0">
+         <children>
+            <Button fx:id="editarButton" layoutX="54.0" layoutY="31.0" mnemonicParsing="false" onMouseClicked="#onClickEditarButton" prefHeight="29.0" prefWidth="91.0" text="Editar" />
+            <Button fx:id="buscarButton" layoutX="182.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#onClickBuscarButton" prefHeight="29.0" prefWidth="91.0" text="Buscar" />
+            <Button fx:id="addButton" layoutX="318.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#onClickAddButton" prefHeight="29.0" prefWidth="91.0" text="Agregar" />
+            <Button fx:id="removeButton" layoutX="461.0" layoutY="27.0" mnemonicParsing="false" onMouseClicked="#onClickRemoveButton" prefHeight="29.0" prefWidth="91.0" text="Eliminar" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="112.0" layoutY="65.0" prefHeight="70.0" prefWidth="173.0" text="Balam">
+         <font>
+            <Font name="System Bold Italic" size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="125.0" layoutY="140.0" text="Café de altura">
+         <font>
+            <Font name="System Italic" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="exitButton" layoutX="1115.0" layoutY="698.0" mnemonicParsing="false" onMouseClicked="#onMouseClickExitButton" prefHeight="33.0" prefWidth="90.0" text="Salir" />
+   </children>
+</AnchorPane>

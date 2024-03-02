@@ -7,6 +7,7 @@ module com.alilopez.vererinaria {
 
 
     opens com.alilopez.application to javafx.fxml;
+    opens com.alilopez.application.models to javafx.base;
     exports com.alilopez.application;
     exports com.alilopez.application.controllers;
     opens com.alilopez.application.controllers to javafx.fxml;
