@@ -9,14 +9,16 @@ public class Usuario {
     private String cargo;
     private int edad;
     private String idUsuario;
+    private String password;
 
-    public Usuario(String nombre, String apellido, String correo, String cargo, int edad, String idUsuario) {
+    public Usuario(String nombre, String apellido, String correo, String cargo, int edad, String idUsuario, String password) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.cargo = cargo;
         this.edad = edad;
         this.idUsuario = idUsuario;
+        this.password = password;
     }
 
     public String getIdUsuario() {
@@ -41,6 +43,10 @@ public class Usuario {
 
     public int getEdad() {
         return edad;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     @Override
