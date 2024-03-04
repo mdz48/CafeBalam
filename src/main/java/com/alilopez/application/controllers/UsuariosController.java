@@ -6,6 +6,7 @@ import com.alilopez.application.models.Usuario;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -58,7 +59,7 @@ public class UsuariosController {
 
     @FXML
     void onClickBuscarButton(MouseEvent event) {
-        App.newStage("buscarUsuario-view", "App - Buscar Usuario");
+        App.newStage("buscarCliente-view", "App - Buscar Usuario");
     }
 
     @FXML
@@ -68,13 +69,26 @@ public class UsuariosController {
 
     @FXML
     void onClickRemoveButton(MouseEvent event) {
-        App.newStage("removeUsuario-view", "App - Remove Usuario");
+        if (App.getTienda().deleteUsuario(usuariosTable.getSelectionModel().getSelectedItem().getIdUsuario())){
+            String contenido = "Se eliminó el usuario";
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText(contenido);
+            alert.showAndWait();
+        } else {
+            String contenido = "No se pudo eliminar";
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText(contenido);
+            alert.showAndWait();
+        }
+//        App.newStage("removeCliente-view", "App - Remove Usuario");
     }
 
     @FXML
     void onMouseClickExitButton(MouseEvent event) throws IOException {
         App escena = new App();
-        escena.changeScene("homeAdmin-view.fxml");
+            escena.changeScene("homeAdmin-view.fxml");
     }
 
     @FXML
@@ -83,7 +97,7 @@ public class UsuariosController {
         colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         colApellido.setCellValueFactory(new PropertyValueFactory<>("apellido"));
         colCorreo.setCellValueFactory(new PropertyValueFactory<>("correo"));
-        colCargo.setCellValueFactory(new PropertyValueFactory<>("gastado"));
+        colCargo.setCellValueFactory(new PropertyValueFactory<>("cargo"));
         colEdad.setCellValueFactory(new PropertyValueFactory<>("edad"));
         colId.setCellValueFactory(new PropertyValueFactory<>("idUsuario"));
 

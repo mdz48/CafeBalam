@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alilopez.application.controllers.HomeCapturistaController">
+    <left>
+        <AnchorPane prefHeight="800.0" prefWidth="609.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="157.0" layoutY="75.0" prefHeight="94.0" prefWidth="246.0" text="Balam">
+                    <font>
+                        <Font name="System Bold Italic" size="65.0" />
+                    </font>
+                </Label>
+                <Label layoutX="183.0" layoutY="172.0" text="Café de altura">
+                    <font>
+                        <Font name="System Italic" size="28.0" />
+                    </font>
+                </Label>
+                <Button fx:id="inventarioButton" layoutX="211.0" layoutY="375.0" mnemonicParsing="false" onMouseClicked="#onClickInventarioButton" text="Inventario">
+                    <font>
+                        <Font size="24.0" />
+                    </font></Button>
+                <Button fx:id="exitButton" layoutX="207.0" layoutY="642.0" mnemonicParsing="false" onMouseClicked="#onMouseClickExitButton" prefHeight="33.0" prefWidth="142.0" text="Salir">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+    </left>
+</BorderPane>

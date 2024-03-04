@@ -1,14 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.alilopez.application.NewUsuarioView"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="562.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alilopez.application.controllers.NewUsuarioController">
+    <children>
+        <Button fx:id="closeButton" layoutX="476.0" layoutY="474.0" mnemonicParsing="false" onMouseClicked="#onClickCloseButton" prefHeight="35.0" prefWidth="200.0" text="Cerrar">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+        <Label layoutX="37.0" layoutY="36.0" style="-fx-alignment: center;" text="Nombre" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+        <TextField fx:id="nombreTextfield" layoutX="39.0" layoutY="58.0" prefHeight="50.0" prefWidth="298.0" />
+        <Label layoutX="39.0" layoutY="119.0" text="Apellido Paterno:">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+        <TextField fx:id="lastnameTextfield" layoutX="35.0" layoutY="151.0" prefHeight="50.0" prefWidth="298.0" />
+        <Button fx:id="saveButton" layoutX="77.0" layoutY="474.0" mnemonicParsing="false" onMouseClicked="#onClickSaveButton" prefHeight="35.0" prefWidth="200.0" text="Guardar">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+        <Label fx:id="alertLabel" layoutX="162.0" layoutY="420.0" prefHeight="22.0" prefWidth="393.0" style="-fx-alignment: center;">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+        <Label layoutX="37.0" layoutY="214.0" style="-fx-alignment: center;" text="Correo" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+        <TextField fx:id="correoTextField" layoutX="35.0" layoutY="248.0" prefHeight="50.0" prefWidth="298.0" />
+        <Label layoutX="399.0" layoutY="36.0" style="-fx-alignment: center;" text="Cargo" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+        <TextField fx:id="cargoTextField" layoutX="399.0" layoutY="58.0" prefHeight="50.0" prefWidth="298.0" promptText="Capturista ó Empleado" />
+        <Label layoutX="35.0" layoutY="322.0" style="-fx-alignment: center;" text="Edad" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+        <TextField fx:id="edadTextfield" layoutX="35.0" layoutY="344.0" prefHeight="50.0" prefWidth="298.0" />
+      <Label layoutX="399.0" layoutY="130.0" style="-fx-alignment: center;" text="ID" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="idTextField" layoutX="399.0" layoutY="152.0" prefHeight="50.0" prefWidth="298.0" />
+      <Label layoutX="401.0" layoutY="214.0" style="-fx-alignment: center;" text="Contraseña" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="passwordTextField" layoutX="399.0" layoutY="248.0" prefHeight="50.0" prefWidth="298.0" />
+    </children>
 </AnchorPane>

@@ -79,7 +79,14 @@ public class InventarioController {
     @FXML
     void onMouseClickExitButton(MouseEvent event) throws IOException {
         App escena = new App();
-        escena.changeScene("homeAdmin-view.fxml");
+        short permisos = App.getUser().getAcess();
+        if (permisos == 1) {
+            escena.changeScene("homeAdmin-view.fxml");
+        } else if (permisos == 2) {
+            escena.changeScene("homeCapturista-view.fxml");
+        } else if (permisos == 3) {
+            escena.changeScene("homeEmpleado-view.fxml");
+        }
     }
 
     @FXML
