@@ -34,6 +34,9 @@ public class UpdateClienteController {
 
     @FXML
     void onClickSaveButton(MouseEvent event) {
+        if (idTextField.getText().isEmpty() || compradoTextField.getText().isEmpty() || gastadoTextField.getText().isEmpty()){
+            alertLabel.setText("Ingrese todos los campos");
+        }
         if (App.getTienda().updateClient(idTextField.getText(), Integer.parseInt(compradoTextField.getText()), Integer.parseInt(gastadoTextField.getText()))){
             alertLabel.setText("Cambios Guardados!");
         } else {

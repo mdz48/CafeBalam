@@ -7,6 +7,7 @@ public class Login {
     private String adminPassword = "123";
     private String id;
     private String password;
+    private short access;
     public short checkLogin(String id, String password){
         short b = 0;
         boolean flag = false;
@@ -26,7 +27,11 @@ public class Login {
                 }
             }
         }
+        access = b;
         return b;
     }
 
+    public short getAcess() {
+        return access;
+    }
 }

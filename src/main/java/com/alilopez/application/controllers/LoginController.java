@@ -30,6 +30,7 @@ public class LoginController {
     @FXML
     private Label wrongLabel;
 
+
     @FXML
     void onClickSalirButton(MouseEvent event) {
         Platform.exit();
@@ -39,15 +40,15 @@ public class LoginController {
     void onClickLoginButton(MouseEvent event) throws IOException {
         Login user = new Login();
         App escena = new App();
-        short permisos = user.checkLogin(userTxt.getText(), passwordTxt.getText());
+        short permisos = App.getUser().checkLogin(userTxt.getText(), passwordTxt.getText());
         if (permisos == 0){
             wrongLabel.setVisible(true);
         } else if (permisos == 1) {
             escena.changeScene("homeAdmin-view.fxml");
         } else if (permisos == 2) {
-            escena.changeScene("inventario-view.fxml");
+            escena.changeScene("homeCapturista-view.fxml");
         } else if (permisos == 3) {
-            escena.changeScene("clientes-view.fxml");
+            escena.changeScene("homeEmpleado-view.fxml");
         }
     }
 
