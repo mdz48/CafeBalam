@@ -1,5 +1,6 @@
 package com.alilopez.application;
 
+import com.alilopez.application.models.Login;
 import com.alilopez.application.models.Tienda;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,10 +16,11 @@ public class App extends javafx.application.Application {
     private static Stage stageView;
     private static Stage stageRoot;
     private static Tienda tienda = new Tienda();
+    private static Login user = new Login();
     @Override
     public void start(Stage stage) throws IOException {
         stageRoot = stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("homeAdmin-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         stage.setTitle("NameApplication - Home");
@@ -63,5 +65,9 @@ public class App extends javafx.application.Application {
     }
     public static Tienda getTienda() {
         return tienda;
+    }
+
+    public static Login getUser() {
+        return user;
     }
 }
