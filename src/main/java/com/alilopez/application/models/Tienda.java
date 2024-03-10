@@ -1,6 +1,8 @@
 package com.alilopez.application.models;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Tienda {
     private ArrayList<Cliente> clientes = new ArrayList<>();
@@ -14,8 +16,21 @@ public class Tienda {
     public boolean addUsuario(Usuario user){
         return usuarios.add(user);
     }
-    public boolean addVentaLocal(VentaLocal sale){
-        return ventasLocales.add(sale);
+    public boolean addVentaLocal(float cantidad, String tipo, float descuento){
+        boolean flag = false;
+        for (int i = 0; i < productos.size(); i++) {
+            if (tipo.equals(productos.get(i).getTipo()) && !flag && cantidad <= productos.get(i).getCantidad()){
+                flag = true;
+                float restante = productos.get(i).getCantidad() - cantidad;
+                productos.get(i).setCantidad(restante);
+                String id = UUID.randomUUID().toString();
+                float monto = productos.get(i).getPrecio()*cantidad;
+                LocalDate fecha = LocalDate.now();
+                VentaLocal ventaLocal = new VentaLocal(id, monto, fecha, descuento);
+                ventasLocales.add(ventaLocal);
+            }
+        }
+        return flag;
     }
     public boolean addVentaNacional(VentaNacional ventaNacional){return  ventaNacionales.add(ventaNacional);}
     public boolean addProducto(Cafe cafe){
