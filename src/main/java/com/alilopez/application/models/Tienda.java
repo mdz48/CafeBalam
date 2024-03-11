@@ -32,7 +32,22 @@ public class Tienda {
         }
         return flag;
     }
-    public boolean addVentaNacional(VentaNacional ventaNacional){return  ventaNacionales.add(ventaNacional);}
+    public boolean addVentaNacional(float cantidad, String tipo, float costoEnvio, String direccion){
+        boolean flag = false;
+        for (int i = 0; i < productos.size(); i++) {
+            if (tipo.equals(productos.get(i).getTipo()) && !flag && cantidad <= productos.get(i).getCantidad()){
+                flag = true;
+                float restante = productos.get(i).getCantidad() - cantidad;
+                productos.get(i).setCantidad(restante);
+                String id = UUID.randomUUID().toString();
+                float monto = productos.get(i).getPrecio()*cantidad;
+                LocalDate fecha = LocalDate.now();
+                VentaNacional ventaNacional = new VentaNacional(id, monto, fecha, costoEnvio, direccion);
+                ventaNacionales.add(ventaNacional);
+            }
+        }
+        return flag;
+    }
     public boolean addProducto(Cafe cafe){
         return productos.add(cafe);
     }

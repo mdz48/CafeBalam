@@ -1,4 +1,4 @@
 package com.alilopez.application.controllers;
 
-public class VentaNacionalController {
+public class VentasController {
 }

@@ -4,50 +4,36 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alilopez.application.controllers.LoginController">
-   <left>
-      <AnchorPane prefHeight="413.0" prefWidth="303.0" BorderPane.alignment="CENTER">
+   <top>
+      <AnchorPane prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: lightgray;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="400.0" fitWidth="409.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../Downloads/imagen-vertical-granos-cafe-tostado-aislado-sobre-fondo-blanco_76000-2527.png" />
-               </image>
-            </ImageView>
-         </children></AnchorPane>
-   </left>
-   <right>
-      <AnchorPane prefHeight="400.0" prefWidth="318.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="79.0" layoutY="57.0" text="Cafe  Balam">
-               <font>
-                  <Font name="System Bold Italic" size="24.0" />
-               </font>
-            </Label>
-            <Label layoutX="40.0" layoutY="129.0" prefHeight="20.0" prefWidth="78.0" text="Usuario:">
+            <Label layoutX="118.0" layoutY="131.0" prefHeight="20.0" prefWidth="78.0" text="Usuario:">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="userTxt" layoutX="40.0" layoutY="161.0" promptText="Usuario" />
-            <Label layoutX="40.0" layoutY="200.0" prefHeight="20.0" prefWidth="78.0" text="Contraseña:">
+            <TextField fx:id="userTxt" layoutX="118.0" layoutY="163.0" promptText="Usuario" />
+            <Label layoutX="118.0" layoutY="202.0" prefHeight="20.0" prefWidth="78.0" text="Contraseña:">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <PasswordField fx:id="passwordTxt" layoutX="41.0" layoutY="235.0" promptText="Contraseña" />
-            <Button fx:id="loginButton" layoutX="41.0" layoutY="280.0" mnemonicParsing="false" onMouseClicked="#onClickLoginButton" text="Iniciar Sesión" />
-            <Label fx:id="wrongLabel" layoutX="113.0" layoutY="131.0" text="Datos Incorrectos" textFill="#e11111" visible="false" />
-            <Button fx:id="salirButton" layoutX="40.0" layoutY="345.0" mnemonicParsing="false" onMouseClicked="#onClickSalirButton" prefHeight="25.0" prefWidth="118.0" text="SALIR">
+            <PasswordField fx:id="passwordTxt" layoutX="119.0" layoutY="237.0" promptText="Contraseña" />
+            <Button fx:id="loginButton" layoutX="119.0" layoutY="282.0" mnemonicParsing="false" onMouseClicked="#onClickLoginButton" text="Iniciar Sesión" />
+            <Label fx:id="wrongLabel" layoutX="191.0" layoutY="133.0" text="Datos Incorrectos" textFill="#e11111" visible="false" />
+            <Button fx:id="salirButton" layoutX="118.0" layoutY="347.0" mnemonicParsing="false" onMouseClicked="#onClickSalirButton" prefHeight="25.0" prefWidth="118.0" text="SALIR">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-         </children></AnchorPane>
-   </right>
+            <ImageView fitHeight="800.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+   </top>
 </BorderPane>

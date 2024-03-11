@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alilopez.application.controllers.HomeAdminController">
-   <left>
+   <center>
       <AnchorPane prefHeight="800.0" prefWidth="609.0" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="157.0" layoutY="75.0" prefHeight="94.0" prefWidth="246.0" text="Balam">
@@ -32,15 +32,11 @@
                <font>
                   <Font size="24.0" />
                </font></Button>
-            <Button fx:id="ventaLocalButton" layoutX="293.0" layoutY="401.0" mnemonicParsing="false" onMouseClicked="#onClickVentaLocalButton" prefHeight="93.0" prefWidth="116.0" text="Venta Local" textAlignment="CENTER" wrapText="true">
-               <font>
-                  <Font size="24.0" />
-               </font></Button>
             <Button fx:id="cajaButton" layoutX="125.0" layoutY="503.0" mnemonicParsing="false" onMouseClicked="#onClickCajaButton" text="Caja">
                <font>
                   <Font size="24.0" />
                </font></Button>
-            <Button fx:id="historialButton" layoutX="355.0" layoutY="529.0" mnemonicParsing="false" onMouseClicked="#onClickHistorialButton" text="Historial">
+            <Button fx:id="historialButton" layoutX="333.0" layoutY="503.0" mnemonicParsing="false" onMouseClicked="#onClickHistorialButton" text="Historial">
                <font>
                   <Font size="24.0" />
                </font></Button>
@@ -49,12 +45,12 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="ventaNacionalButton" layoutX="440.0" layoutY="401.0" mnemonicParsing="false" onMouseClicked="#onClickVentaNacionalButton" prefHeight="94.0" prefWidth="150.0" text="Venta Nacional" textAlignment="CENTER" wrapText="true">
+            <Button fx:id="ventaButton" layoutX="346.0" layoutY="417.0" mnemonicParsing="false" onMouseClicked="#onClickVentaButton" text="Venta">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
-   </left>
+   </center>
 </BorderPane>
