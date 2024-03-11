@@ -9,10 +9,10 @@ public class Login {
     private String password;
     private short access;
     public short checkLogin(String id, String password){
-        short b = 0;
+        access = 0;
         boolean flag = false;
         if (adminId.equals(id) && adminPassword.equals(password)){
-            b = 1;
+            access = 1;
             flag = true;
         }
         if (!flag) {
@@ -20,15 +20,14 @@ public class Login {
                 Usuario user = App.getTienda().getUsuarios().get(i);
                 if (id.equals(user.getIdUsuario()) && password.equals(user.getPassword())) {
                     if (user.getCargo().equals("Capturista")) {
-                        b = 2;
+                        access = 2;
                     } else if (user.getCargo().equals("Empleado")) {
-                        b = 3;
+                        access = 3;
                     }
                 }
             }
         }
-        access = b;
-        return b;
+        return access;
     }
 
     public short getAcess() {

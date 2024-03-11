@@ -58,13 +58,13 @@ public class Cliente {
     @Override
     public String toString() {
         return "Cliente{" +
-                "idCliente='" + idCliente + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", correo='" + correo + '\'' +
-                ", telefono=" + telefono +
-                ", gastado=" + gastado +
-                ", comprado=" + comprado +
+                "idCliente='" + idCliente + "\n" +
+                ", nombre='" + nombre + "\n" +
+                ", lastname='" + lastname + "\n" +
+                ", correo='" + correo + "\n" +
+                ", telefono=" + telefono + "\n" +
+                ", gastado=" + gastado + "\n" +
+                ", comprado=" + comprado + "\n" +
                 '}';
     }
 }

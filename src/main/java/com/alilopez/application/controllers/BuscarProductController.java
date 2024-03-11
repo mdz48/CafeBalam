@@ -29,7 +29,13 @@ public class BuscarProductController {
 
     @FXML
     void onClickBuscarButton(MouseEvent event) {
-        String contenido = "Producto:\n" + App.getTienda().searchProducto(idTextfield.getText());
+        String contenido = null;
+        if (App.getTienda().searchProducto(idTextfield.getText()) == null) {
+            contenido = "No se encontró un producto con ese ID";
+        } else {
+            contenido = App.getTienda().searchProducto(idTextfield.getText());
+        }
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
         alert.setContentText(contenido);

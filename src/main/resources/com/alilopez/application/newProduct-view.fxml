@@ -34,19 +34,19 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="costoTextField" layoutX="59.0" layoutY="161.0" prefHeight="50.0" prefWidth="298.0" />
+      <TextField fx:id="costoTextField" layoutX="59.0" layoutY="161.0" onKeyTyped="#restriccionCaracteracteres" prefHeight="50.0" prefWidth="298.0" />
       <Label layoutX="59.0" layoutY="229.0" style="-fx-alignment: center;" text="Precio" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="precioTextField" layoutX="59.0" layoutY="262.0" prefHeight="50.0" prefWidth="298.0" />
+      <TextField fx:id="precioTextField" layoutX="59.0" layoutY="262.0" onKeyTyped="#restriccionCaracteracteres" prefHeight="50.0" prefWidth="298.0" />
       <Label layoutX="411.0" layoutY="47.0" style="-fx-alignment: center;" text="Peso" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="pesoTextField" layoutX="411.0" layoutY="80.0" prefHeight="50.0" prefWidth="298.0" />
+      <TextField fx:id="pesoTextField" layoutX="411.0" layoutY="80.0" onKeyTyped="#restriccionCaracteracteres" prefHeight="50.0" prefWidth="298.0" />
       <Label layoutX="411.0" layoutY="140.0" style="-fx-alignment: center;" text="Tipo" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="15.0" />
@@ -58,6 +58,6 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="cantidadTextField" layoutX="411.0" layoutY="268.0" prefHeight="50.0" prefWidth="298.0" />
+      <TextField fx:id="cantidadTextField" layoutX="411.0" layoutY="268.0" onKeyTyped="#restriccionCaracteracteres" prefHeight="50.0" prefWidth="298.0" />
     </children>
 </AnchorPane>

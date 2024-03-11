@@ -29,7 +29,12 @@ public class BuscarClienteController {
 
     @FXML
     void onClickBuscarButton(MouseEvent event) {
-        String contenido = "Cliente:\n" + App.getTienda().searchCliente(idTextfield.getText());
+        String contenido = null;
+        if (App.getTienda().searchCliente(idTextfield.getText()) == null){
+            contenido = "No se encontro un cliente con es ID";
+        } else{
+            contenido = "Cliente:\n" + App.getTienda().searchCliente(idTextfield.getText());
+        }
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
         alert.setContentText(contenido);

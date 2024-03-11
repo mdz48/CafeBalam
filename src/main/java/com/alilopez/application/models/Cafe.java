@@ -52,14 +52,12 @@ public class Cafe {
 
     @Override
     public String toString() {
-        return "Cafe{" +
-                "precio=" + precio +
-                ", weight=" + peso +
-                ", idCafe='" + idCafe + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", cantidad=" + cantidad + '\'' +
-                ", tipo=" + tipo + '\'' +
-                ", costo=" + costo + '\'' +
-                '}';
+        return  "Nombre: " + nombre + '\n' +
+                "Tipo: " + tipo + '\n' +
+                "Precio: " + precio + "\n" +
+                "Peso: " + peso + "\n" +
+                "Cantidad: " + cantidad + '\n' +
+                "Costo: " + costo + '\n' +
+                "ID: " + idCafe + '\n';
     }
 }

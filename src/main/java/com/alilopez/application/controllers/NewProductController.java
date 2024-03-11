@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 import java.util.UUID;
@@ -42,7 +43,6 @@ public class NewProductController {
     }
     @FXML
     void onClickSaveButton(MouseEvent event) {
-
         String nombre = nombreTextfield.getText();
         String tipo = tipoTextField.getText();
         float costo = Integer.parseInt(costoTextField.getText());
@@ -65,5 +65,38 @@ public class NewProductController {
         saveButton.getStyleClass().setAll("btn","btn-success");
         saveButton.setStyle("-fx-font-size: 15px; -fx-font-weight: 700; -fx-alignment: center;");
     }
+
+    @FXML
+    private void restriccionCaracteracteres(KeyEvent event){
+        if (event.getTarget() == cantidadTextField){
+            if (!Character.isDigit(event.getCharacter().charAt(0))){
+                event.consume();
+            }
+
+        } else if (event.getTarget() == costoTextField) {
+            if (!Character.isDigit(event.getCharacter().charAt(0))  && event.getCharacter().charAt(0) != '.'){
+                event.consume();
+            }
+            if (event.getCharacter().charAt(0) == '.' && costoTextField.getText().contains(".")){
+                event.consume();
+            }
+        } else if (event.getTarget() == pesoTextField) {
+            if (!Character.isDigit(event.getCharacter().charAt(0))  && event.getCharacter().charAt(0) != '.'){
+                event.consume();
+            }
+            if (event.getCharacter().charAt(0) == '.' && pesoTextField.getText().contains(".")){
+                event.consume();
+            }
+        } else if (event.getTarget() == precioTextField) {
+            if (!Character.isDigit(event.getCharacter().charAt(0))  && event.getCharacter().charAt(0) != '.'){
+                event.consume();
+            }
+            if (event.getCharacter().charAt(0) == '.' && precioTextField.getText().contains(".")){
+                event.consume();
+            }
+        }
+    }
+
+
 
 }

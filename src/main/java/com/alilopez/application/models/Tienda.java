@@ -1,5 +1,8 @@
 package com.alilopez.application.models;
 
+import javafx.fxml.FXML;
+import javafx.scene.input.KeyEvent;
+
 import java.util.ArrayList;
 
 public class Tienda {
@@ -86,7 +89,7 @@ public class Tienda {
         return flag;
     }
     public String searchCliente(String id){
-        String b = "No se encontró el cliente";
+        String b = null;
         boolean flag = false;
         for (int i = 0; i < clientes.size(); i++) {
             String userId = clientes.get(i).getIdCliente();
@@ -99,7 +102,7 @@ public class Tienda {
     }
 
     public String searchProducto(String id){
-        String b = "No se encontró el producto";
+        String b = null;
         boolean flag = false;
         for (int i = 0; i < productos.size(); i++) {
             String productId = productos.get(i).getIdCafe();
