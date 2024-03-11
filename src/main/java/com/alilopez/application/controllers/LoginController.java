@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
@@ -53,11 +54,19 @@ public class LoginController {
     }
 
     @FXML
+    void keyInputPasswordTxt(KeyEvent event) {
+        wrongLabel.setVisible(false);
+    }
+
+    @FXML
+    void keyInputUserTxt(KeyEvent event) {
+        wrongLabel.setVisible(false);
+    }
+
+    @FXML
     void initialize() {
-        loginButton.getStyleClass().setAll("btn","btn-gl","btn-success");
-        loginButton.setStyle("-fx-font-size: 20px; -fx-font-weight: 900; -fx-alignment: center;");
-        salirButton.getStyleClass().setAll("btn","btn-gl","btn-success");
-        salirButton.setStyle("-fx-font-size: 20px; -fx-font-weight: 900; -fx-alignment: center;");
+        loginButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
+        salirButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
     }
 
 }
