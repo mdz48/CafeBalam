@@ -32,7 +32,7 @@
                <font>
                   <Font size="24.0" />
                </font></Button>
-            <Button fx:id="ventaButton" layoutX="355.0" layoutY="402.0" mnemonicParsing="false" onMouseClicked="#onClickVentaButton" text="Venta">
+            <Button fx:id="ventaLocalButton" layoutX="293.0" layoutY="401.0" mnemonicParsing="false" onMouseClicked="#onClickVentaLocalButton" prefHeight="93.0" prefWidth="116.0" text="Venta Local" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="24.0" />
                </font></Button>
@@ -40,11 +40,16 @@
                <font>
                   <Font size="24.0" />
                </font></Button>
-            <Button fx:id="historialButton" layoutX="333.0" layoutY="502.0" mnemonicParsing="false" onMouseClicked="#onClickHistorialButton" text="Historial">
+            <Button fx:id="historialButton" layoutX="355.0" layoutY="529.0" mnemonicParsing="false" onMouseClicked="#onClickHistorialButton" text="Historial">
                <font>
                   <Font size="24.0" />
                </font></Button>
             <Button fx:id="exitButton" layoutX="207.0" layoutY="642.0" mnemonicParsing="false" onMouseClicked="#onMouseClickExitButton" prefHeight="33.0" prefWidth="142.0" text="Salir">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="ventaNacionalButton" layoutX="440.0" layoutY="401.0" mnemonicParsing="false" onMouseClicked="#onClickVentaNacionalButton" prefHeight="94.0" prefWidth="150.0" text="Venta Nacional" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="24.0" />
                </font>

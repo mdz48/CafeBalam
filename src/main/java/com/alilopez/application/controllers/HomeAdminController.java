@@ -28,7 +28,10 @@ public class HomeAdminController {
     private Button usuarioButton;
 
     @FXML
-    private Button ventaButton;
+    private Button ventaLocalButton;
+
+    @FXML
+    private Button ventaNacionalButton;
 
     @FXML
     void onClickCajaButton(MouseEvent event) {
@@ -59,8 +62,12 @@ public class HomeAdminController {
     }
 
     @FXML
-    void onClickVentaButton(MouseEvent event) {
-
+    void onClickVentaLocalButton(MouseEvent event) throws IOException {
+        App.newStage("newVentaLocal-view", "App - Realizar Venta Local");
+    }
+    @FXML
+    void onClickVentaNacionalButton(MouseEvent event) throws IOException {
+        App.newStage("newVentaNacional-view", "App - Realizar Venta Nacional");
     }
     @FXML
     void onMouseClickExitButton(MouseEvent event) throws IOException, IOException {

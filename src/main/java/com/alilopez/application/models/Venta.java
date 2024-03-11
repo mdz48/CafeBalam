@@ -1,12 +1,16 @@
 package com.alilopez.application.models;
 
-public class Venta {
-    private String idVenta;
-    private float monto;
+import java.time.LocalDate;
 
-    public Venta(String idVenta, float monto) {
+public class Venta {
+    protected String idVenta;
+    protected float monto;
+    protected LocalDate fecha;
+
+    public Venta(String idVenta, float monto, LocalDate date) {
         this.idVenta = idVenta;
         this.monto = monto;
+        this.fecha = date;
     }
 
     @Override

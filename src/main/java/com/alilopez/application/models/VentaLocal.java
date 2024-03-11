@@ -1,20 +1,20 @@
 package com.alilopez.application.models;
 
-public class VentaLocal extends Venta{
-    private float descuento;
-    private String vendedor;
+import java.time.LocalDate;
 
-    public VentaLocal(String idVenta, float monto, float descuento, String vendedor) {
-        super(idVenta, monto);
-        this.descuento = descuento;
-        this.vendedor = vendedor;
+public class VentaLocal extends Venta{
+    private float descuentoLocal = 0;
+
+    public VentaLocal(String idVenta, float monto, LocalDate date, float descuentoLocal) {
+        super(idVenta, monto, date);
+        this.descuentoLocal = descuentoLocal;
     }
+
 
     @Override
     public String toString() {
         return "VentaLocal{" +
-                "descuento=" + descuento +
-                ", vendedor='" + vendedor + '\'' +
+                "descuento=" + descuentoLocal +
                 '}';
     }
 }
