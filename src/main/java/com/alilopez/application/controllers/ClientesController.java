@@ -89,7 +89,6 @@ public class ClientesController {
 
     @FXML
     public void initialize() {
-        colId.setCellValueFactory(new PropertyValueFactory<>("idCliente"));
         colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         colApellido.setCellValueFactory(new PropertyValueFactory<>("lastname"));
         colCorreo.setCellValueFactory(new PropertyValueFactory<>("correo"));
@@ -98,11 +97,8 @@ public class ClientesController {
         colComprado.setCellValueFactory(new PropertyValueFactory<>("comprado"));
 
         ObservableList<Cliente> clientes = FXCollections.observableArrayList(App.getTienda().getClientes());
-
         clienteTable.setItems(clientes);
-        for (int i = 0; i < clientes.size(); i++) {
-            System.out.println(clientes.get(i).getIdCliente());
-        }
+
     }
 
 }

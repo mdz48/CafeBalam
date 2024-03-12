@@ -4,20 +4,30 @@ import java.time.LocalDate;
 
 public class Venta {
     protected String idVenta;
-    protected float monto;
+    protected double monto;
     protected LocalDate fecha;
+    protected double cantidad;
 
-    public Venta(String idVenta, float monto, LocalDate date) {
+    public Venta(String idVenta, double monto, LocalDate fecha, double cantidad) {
         this.idVenta = idVenta;
         this.monto = monto;
-        this.fecha = date;
+        this.fecha = fecha;
+        this.cantidad = cantidad;
     }
 
-    @Override
-    public String toString() {
-        return "Venta{" +
-                "idVenta='" + idVenta + '\'' +
-                ", monto=" + monto +
-                '}';
+    public String getIdVenta() {
+        return idVenta;
+    }
+
+    public double getMonto() {
+        return monto;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public double getCantidad() {
+        return cantidad;
     }
 }

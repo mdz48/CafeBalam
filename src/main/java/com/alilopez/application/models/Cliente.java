@@ -1,7 +1,6 @@
 package com.alilopez.application.models;
 
 public class Cliente {
-    private String idCliente;
     private String nombre;
     private String lastname;
     private String correo;
@@ -9,8 +8,7 @@ public class Cliente {
     private float gastado;
     private float comprado;
 
-    public Cliente(String idCliente, String nombre, String lastname, String correo, long telefono, float gastado, float comprado) {
-        this.idCliente = idCliente;
+    public Cliente(String nombre, String lastname, String correo, long telefono, float gastado, float comprado) {
         this.nombre = nombre;
         this.lastname = lastname;
         this.correo = correo;
@@ -19,9 +17,6 @@ public class Cliente {
         this.comprado = comprado;
     }
 
-    public String getIdCliente() {
-        return idCliente;
-    }
 
     public String getNombre() {
         return nombre;
@@ -58,7 +53,6 @@ public class Cliente {
     @Override
     public String toString() {
         return "Cliente{" +
-                "idCliente='" + idCliente + "\n" +
                 ", nombre='" + nombre + "\n" +
                 ", lastname='" + lastname + "\n" +
                 ", correo='" + correo + "\n" +

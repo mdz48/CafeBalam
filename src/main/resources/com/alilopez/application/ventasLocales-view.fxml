@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alilopez.application.controllers.VentasLocalesController">
+    <children>
+        <ImageView fitHeight="800.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../img/fondo-home-cafebalam.png" />
+            </image>
+        </ImageView>
+        <TableView fx:id="productosTable" layoutX="194.0" layoutY="217.0" prefHeight="400.0" prefWidth="893.0">
+            <columns>
+                <TableColumn fx:id="colIdVenta" prefWidth="125.0" text="ID Venta" />
+                <TableColumn fx:id="colMonto" prefWidth="120.0" text="Monto" />
+                <TableColumn fx:id="colFecha" prefWidth="115.0" text="Fecha" />
+                <TableColumn fx:id="colCantidad" minWidth="0.0" prefWidth="122.0" text="Cantidad" />
+                <TableColumn fx:id="colDescuento" prefWidth="136.0" text="Descuento" />
+                <TableColumn fx:id="colIDVendedor" prefWidth="274.0" text="ID" />
+            </columns>
+        </TableView>
+        <AnchorPane layoutX="521.0" layoutY="73.0" prefHeight="86.0" prefWidth="643.0">
+            <children>
+                <Button fx:id="buscarButton" layoutX="182.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#onClickBuscarButton" prefHeight="29.0" prefWidth="91.0" text="Buscar" />
+                <Button fx:id="addButton" layoutX="318.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#onClickAddButton" prefHeight="29.0" prefWidth="91.0" text="Agregar" />
+                <Button fx:id="removeButton" layoutX="461.0" layoutY="27.0" mnemonicParsing="false" onMouseClicked="#onClickRemoveButton" prefHeight="29.0" prefWidth="91.0" text="Eliminar" />
+            </children>
+        </AnchorPane>
+        <Button fx:id="exitButton" layoutX="566.0" layoutY="671.0" mnemonicParsing="false" onMouseClicked="#onMouseClickExitButton" prefHeight="33.0" prefWidth="150.0" text="Salir" />
+    </children>
+</AnchorPane>

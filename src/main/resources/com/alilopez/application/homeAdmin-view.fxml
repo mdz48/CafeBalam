@@ -13,37 +13,42 @@
             <Image url="@../../../img/fondo-home-cafebalam.png" />
          </image>
       </ImageView>
-      <Button fx:id="inventarioButton" layoutX="95.0" layoutY="317.0" mnemonicParsing="false" onMouseClicked="#onClickInventarioButton" text="Inventario">
+      <Button fx:id="inventarioButton" layoutX="61.0" layoutY="274.0" mnemonicParsing="false" onMouseClicked="#onClickInventarioButton" prefHeight="51.0" prefWidth="139.0" text="Inventario">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="clienteButton" layoutX="340.0" layoutY="317.0" mnemonicParsing="false" onMouseClicked="#onClickClienteButton" text="Cliente">
+      <Button fx:id="clienteButton" layoutX="223.0" layoutY="274.0" mnemonicParsing="false" onMouseClicked="#onClickClienteButton" prefHeight="51.0" prefWidth="139.0" text="Clientes">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="usuarioButton" layoutX="101.0" layoutY="401.0" mnemonicParsing="false" onMouseClicked="#onClickUsuarioButton" text="Usuario">
+      <Button fx:id="usuarioButton" layoutX="386.0" layoutY="274.0" mnemonicParsing="false" onMouseClicked="#onClickUsuarioButton" prefHeight="51.0" prefWidth="160.0" text="Empleados">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="cajaButton" layoutX="125.0" layoutY="503.0" mnemonicParsing="false" onMouseClicked="#onClickCajaButton" text="Caja">
+      <Button fx:id="cajaButton" layoutX="224.0" layoutY="492.0" mnemonicParsing="false" onMouseClicked="#onClickCajaButton" prefHeight="51.0" prefWidth="139.0" text="Caja">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="historialButton" layoutX="333.0" layoutY="503.0" mnemonicParsing="false" onMouseClicked="#onClickHistorialButton" text="Historial">
+      <Button fx:id="historialButton" alignment="CENTER" layoutX="386.0" layoutY="364.0" mnemonicParsing="false" onMouseClicked="#onClickHistorialButton" prefHeight="93.0" prefWidth="160.0" text="Historial de Ventas" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="exitButton" layoutX="207.0" layoutY="642.0" mnemonicParsing="false" onMouseClicked="#onMouseClickExitButton" prefHeight="33.0" prefWidth="142.0" text="Salir">
+      <Button fx:id="exitButton" layoutX="222.0" layoutY="614.0" mnemonicParsing="false" onMouseClicked="#onMouseClickExitButton" prefHeight="33.0" prefWidth="142.0" text="Salir">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="ventaButton" layoutX="346.0" layoutY="417.0" mnemonicParsing="false" onMouseClicked="#onClickVentaButton" text="Venta">
+      <Button fx:id="ventaNacionalButton" alignment="CENTER" layoutX="223.0" layoutY="364.0" mnemonicParsing="false" onMouseClicked="#onClickVentaNacionalButton" prefHeight="93.0" prefWidth="139.0" text="Venta Nacional" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="ventaLocalButton" layoutX="61.0" layoutY="361.0" mnemonicParsing="false" onMouseClicked="#onClickVentaLocalButton" prefHeight="100.0" prefWidth="139.0" text="Venta Local" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="24.0" />
          </font>

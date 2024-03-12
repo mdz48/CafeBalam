@@ -6,8 +6,8 @@ public class VentaNacional extends Venta{
     private float costoEnvio;
     private String direccion;
 
-    public VentaNacional(String idVenta, float monto, LocalDate date, float costoEnvio, String direccion) {
-        super(idVenta, monto, date);
+    public VentaNacional(String idVenta, double monto, LocalDate date, double cantidad, float costoEnvio, String direccion) {
+        super(idVenta, monto, date, cantidad);
         this.costoEnvio = costoEnvio;
         this.direccion = direccion;
     }

@@ -1,5 +1,7 @@
 package com.alilopez.application.models;
 
+import com.alilopez.application.App;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -11,38 +13,57 @@ public class Tienda {
     private ArrayList<VentaLocal> ventasLocales = new ArrayList<>();
     private ArrayList<VentaNacional> ventaNacionales = new ArrayList<>();
     public boolean addCliente(Cliente cliente){
-        return clientes.add(cliente);
+        boolean flag = false;
+        for (int i = 0; i < clientes.size(); i++) {
+            if (cliente.getCorreo().equals(clientes.get(i).getCorreo()) && !flag) {
+                flag = true;
+            }
+        }
+        if (!flag) {
+            clientes.add(cliente);
+        }
+        return flag;
     }
     public boolean addUsuario(Usuario user){
-        return usuarios.add(user);
+        boolean flag = false;
+        for (int i = 0; i < usuarios.size(); i++) {
+            if (user.getIdUsuario().equals(usuarios.get(i).getIdUsuario()) && !flag) {
+                flag = true;
+            }
+        }
+        if (!flag) {
+            usuarios.add(user);
+        }
+        return flag;
     }
-    public boolean addVentaLocal(float cantidad, String tipo, float descuento){
+    public boolean addVentaLocal(double cantidad, String tipo, float descuento){
         boolean flag = false;
         for (int i = 0; i < productos.size(); i++) {
             if (tipo.equals(productos.get(i).getTipo()) && !flag && cantidad <= productos.get(i).getCantidad()){
                 flag = true;
-                float restante = productos.get(i).getCantidad() - cantidad;
+                double restante = productos.get(i).getCantidad() - cantidad;
                 productos.get(i).setCantidad(restante);
                 String id = UUID.randomUUID().toString();
-                float monto = productos.get(i).getPrecio()*cantidad;
+                double monto = productos.get(i).getPrecio()*cantidad;
                 LocalDate fecha = LocalDate.now();
-                VentaLocal ventaLocal = new VentaLocal(id, monto, fecha, descuento);
+                String idVendedor = App.getUser().getId();
+                VentaLocal ventaLocal = new VentaLocal(id, monto, fecha, cantidad, descuento, idVendedor);
                 ventasLocales.add(ventaLocal);
             }
         }
         return flag;
     }
-    public boolean addVentaNacional(float cantidad, String tipo, float costoEnvio, String direccion){
+    public boolean addVentaNacional(double cantidad, String tipo, float costoEnvio, String direccion){
         boolean flag = false;
         for (int i = 0; i < productos.size(); i++) {
             if (tipo.equals(productos.get(i).getTipo()) && !flag && cantidad <= productos.get(i).getCantidad()){
                 flag = true;
-                float restante = productos.get(i).getCantidad() - cantidad;
+                double restante = productos.get(i).getCantidad() - cantidad;
                 productos.get(i).setCantidad(restante);
                 String id = UUID.randomUUID().toString();
-                float monto = productos.get(i).getPrecio()*cantidad;
+                double monto = productos.get(i).getPrecio()*cantidad;
                 LocalDate fecha = LocalDate.now();
-                VentaNacional ventaNacional = new VentaNacional(id, monto, fecha, costoEnvio, direccion);
+                VentaNacional ventaNacional = new VentaNacional(id, monto, fecha, cantidad, costoEnvio, direccion);
                 ventaNacionales.add(ventaNacional);
             }
         }
@@ -71,11 +92,11 @@ public class Tienda {
     public ArrayList<VentaNacional> getVentaNacionales() {
         return ventaNacionales;
     }
-    public boolean updateClient(String id, float comprado, float gastado){
+    public boolean updateClient(String correo, float comprado, float gastado){
         boolean flag = false;
         for (int i = 0; i < clientes.size(); i++) {
-            String userId = clientes.get(i).getIdCliente();
-            if (userId.equals(id) && !flag && comprado>0 && gastado>0){
+            String userMail = clientes.get(i).getCorreo();
+            if (userMail.equals(correo) && !flag && comprado>0 && gastado>0){
                 flag = true;
                 clientes.get(i).setComprado(comprado);
                 clientes.get(i).setGastado(gastado);
@@ -115,12 +136,12 @@ public class Tienda {
         }
         return flag;
     }
-    public String searchCliente(String id){
-        String b = "No se encontró el cliente";
+    public String searchCliente(String mail){
+        String b = null;
         boolean flag = false;
         for (int i = 0; i < clientes.size(); i++) {
-            String userId = clientes.get(i).getIdCliente();
-            if (userId.equals(id) && !flag){
+            String clientMail = clientes.get(i).getCorreo();
+            if (clientMail.equals(mail) && !flag){
                 b = clientes.get(i).toString();
                 flag = true;
             }
@@ -129,7 +150,7 @@ public class Tienda {
     }
 
     public String searchProducto(String id){
-        String b = "No se encontró el producto";
+        String b = null;
         boolean flag = false;
         for (int i = 0; i < productos.size(); i++) {
             String productId = productos.get(i).getIdCafe();
@@ -140,11 +161,11 @@ public class Tienda {
         }
         return b;
     }
-    public boolean deleteCliente(String id){
+    public boolean deleteCliente(String correo){
         boolean flag = false;
         for (int i = 0; i < clientes.size(); i++) {
-            String userId = clientes.get(i).getIdCliente();
-            if (userId.equals(id) && !flag){
+            String clienteMail = clientes.get(i).getCorreo();
+            if (clienteMail.equals(correo) && !flag){
                 clientes.remove(i);
                 flag = true;
             }

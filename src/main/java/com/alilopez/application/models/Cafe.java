@@ -5,10 +5,10 @@ public class Cafe {
     private float peso;
     private String idCafe;
     private String nombre;
-    private float cantidad;
+    private double cantidad;
     private String tipo;
     private float costo;
-    public Cafe(float precio, float peso, String idCafe, String nombre, float cantidad, String tipo, float costo) {
+    public Cafe(float precio, float peso, String idCafe, String nombre, double cantidad, String tipo, float costo) {
         this.precio = precio;
         this.peso = peso;
         this.idCafe = idCafe;
@@ -34,7 +34,7 @@ public class Cafe {
         return nombre;
     }
 
-    public float getCantidad() {
+    public double getCantidad() {
         return cantidad;
     }
 
@@ -46,7 +46,7 @@ public class Cafe {
         return costo;
     }
 
-    public void setCantidad(float cantidad) {
+    public void setCantidad(double cantidad) {
         this.cantidad = cantidad;
     }
 

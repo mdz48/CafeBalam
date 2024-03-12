@@ -8,8 +8,10 @@ public class Login {
     private String id;
     private String password;
     private short access;
+
     public short checkLogin(String id, String password){
         access = 0;
+        this.id = id;
         boolean flag = false;
         if (adminId.equals(id) && adminPassword.equals(password)){
             access = 1;
@@ -32,5 +34,9 @@ public class Login {
 
     public short getAcess() {
         return access;
+    }
+
+    public String getId() {
+        return id;
     }
 }

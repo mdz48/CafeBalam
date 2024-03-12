@@ -3,10 +3,11 @@ package com.alilopez.application.controllers;
 import com.alilopez.application.App;
 import com.alilopez.application.models.Cliente;
 import com.alilopez.application.models.Usuario;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
 import java.util.UUID;
@@ -20,6 +21,9 @@ public class NewUsuarioController {
     private Label alertLabel;
 
     @FXML
+    private ComboBox<String> cargoComboBox;
+
+    @FXML
     private TextField correoTextField;
 
     @FXML
@@ -29,8 +33,7 @@ public class NewUsuarioController {
 
     @FXML
     private TextField nombreTextfield;
-    @FXML
-    private TextField cargoTextField;
+
     @FXML
     private TextField edadTextfield;
 
@@ -50,27 +53,59 @@ public class NewUsuarioController {
         String nombre = nombreTextfield.getText();
         String apellido = lastnameTextfield.getText();
         String correo = correoTextField.getText();
-        String cargo = cargoTextField.getText();
-        int edad = Integer.parseInt(edadTextfield.getText());
+        String cargo = cargoComboBox.getValue();
+        int edad;
         String id = idTextField.getText();
         String password = passwordTextField.getText();
-        Usuario user = new Usuario(nombre, apellido, correo, cargo, edad, id, password);
-        if (cargo.equals("Capturista") || cargo.equals("Empleado")){
-            if (App.getTienda().addUsuario(user)){
-                alertLabel.setText("Se agregó existosamente");
+        try{
+            edad = Integer.parseInt(edadTextfield.getText());
+            if (edad > 0 && edad <= 100) {
+                if (!(cargoComboBox.getValue() == null)){
+                    Usuario user = new Usuario(nombre, apellido, correo, cargo, edad, id, password);
+                    if (!App.getTienda().addUsuario(user)){
+                        alertLabel.setText("Se agregó existosamente");
+                    } else {
+                        String contenido = "Este ID ya fue registrado";
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setHeaderText(null);
+                        alert.setContentText(contenido);
+                        alert.showAndWait();
+                    }
+                } else {
+                    String contenido = "Seleccione un cargo";
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setContentText(contenido);
+                    alert.showAndWait();
+                }
             } else {
-                alertLabel.setText("No se pudo agregar");
+                String contenido = "Ingrese una edad valida";
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText(contenido);
+                alert.showAndWait();
             }
-        } else {
-            alertLabel.setText("Ingrese un cargo válido");
+
+        } catch (NumberFormatException e){
+            String contenido = "Ingrese números en la edad";
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText(contenido);
+            alert.showAndWait();
         }
+
+    }
+
+    @FXML
+    void selectComboBox(ActionEvent event) {
+
     }
     @FXML
     void initialize() {
-        closeButton.getStyleClass().setAll("btn","btn-danger");
-        closeButton.setStyle("-fx-font-size: 15px; -fx-font-weight: 700; -fx-alignment: center;");
-        saveButton.getStyleClass().setAll("btn","btn-success");
-        saveButton.setStyle("-fx-font-size: 15px; -fx-font-weight: 700; -fx-alignment: center;");
+        ObservableList <String> list = FXCollections.observableArrayList("Empleado", "Capturista");
+        cargoComboBox.setItems(list);
+        closeButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
+        saveButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
     }
 
 }

@@ -35,7 +35,7 @@ public class NewVentaLocalController {
     @FXML
     void onClickSaveButton(MouseEvent event) {
         float descuento;
-        float cantidad = Integer.parseInt(cantidadTxt.getText());
+        double cantidad = Integer.parseInt(cantidadTxt.getText());
         if (descuentoTxt.getText().isEmpty()){
             descuento = 0;
         } else {
