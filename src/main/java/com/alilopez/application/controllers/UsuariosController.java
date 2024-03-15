@@ -59,7 +59,7 @@ public class UsuariosController {
 
     @FXML
     void onClickBuscarButton(MouseEvent event) {
-        App.newStage("buscarCliente-view", "App - Buscar Usuario");
+        App.newStage("buscarUsuario-view", "App - Buscar Usuario");
     }
 
     @FXML
@@ -104,9 +104,6 @@ public class UsuariosController {
         ObservableList<Usuario> usuarios = FXCollections.observableArrayList(App.getTienda().getUsuarios());
 
         usuariosTable.setItems(usuarios);
-        for (int i = 0; i < usuarios.size(); i++) {
-            System.out.println(usuarios.get(i).getIdUsuario());
-        }
     }
 
 }

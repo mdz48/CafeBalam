@@ -14,23 +14,23 @@
                 <Image url="@../../../img/fondo-home-cafebalam.png" />
             </image>
         </ImageView>
-        <TableView fx:id="productosTable" layoutX="194.0" layoutY="217.0" prefHeight="400.0" prefWidth="893.0">
+        <TableView fx:id="ventasLocalesTable" layoutX="194.0" layoutY="235.0" prefHeight="400.0" prefWidth="893.0">
             <columns>
                 <TableColumn fx:id="colIdVenta" prefWidth="125.0" text="ID Venta" />
                 <TableColumn fx:id="colMonto" prefWidth="120.0" text="Monto" />
                 <TableColumn fx:id="colFecha" prefWidth="115.0" text="Fecha" />
                 <TableColumn fx:id="colCantidad" minWidth="0.0" prefWidth="122.0" text="Cantidad" />
                 <TableColumn fx:id="colDescuento" prefWidth="136.0" text="Descuento" />
-                <TableColumn fx:id="colIDVendedor" prefWidth="274.0" text="ID" />
+                <TableColumn fx:id="colIDVendedor" prefWidth="274.0" text="ID Vendedor" />
             </columns>
         </TableView>
-        <AnchorPane layoutX="521.0" layoutY="73.0" prefHeight="86.0" prefWidth="643.0">
+        <AnchorPane layoutX="598.0" layoutY="83.0" prefHeight="86.0" prefWidth="489.0" style="-fx-background-color: #6B400F;">
             <children>
-                <Button fx:id="buscarButton" layoutX="182.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#onClickBuscarButton" prefHeight="29.0" prefWidth="91.0" text="Buscar" />
-                <Button fx:id="addButton" layoutX="318.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#onClickAddButton" prefHeight="29.0" prefWidth="91.0" text="Agregar" />
-                <Button fx:id="removeButton" layoutX="461.0" layoutY="27.0" mnemonicParsing="false" onMouseClicked="#onClickRemoveButton" prefHeight="29.0" prefWidth="91.0" text="Eliminar" />
+                <Button fx:id="buscarButton" layoutX="75.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#onClickBuscarButton" prefHeight="29.0" prefWidth="91.0" style="-fx-background-color: #D69447;" text="Buscar" />
+                <Button fx:id="addButton" layoutX="211.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#onClickAddButton" prefHeight="29.0" prefWidth="91.0" style="-fx-background-color: #D69447;" text="Agregar" />
+                <Button fx:id="removeButton" layoutX="354.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#onClickRemoveButton" prefHeight="29.0" prefWidth="91.0" style="-fx-background-color: #D69447;" text="Eliminar" />
             </children>
         </AnchorPane>
-        <Button fx:id="exitButton" layoutX="566.0" layoutY="671.0" mnemonicParsing="false" onMouseClicked="#onMouseClickExitButton" prefHeight="33.0" prefWidth="150.0" text="Salir" />
+        <Button fx:id="exitButton" layoutX="566.0" layoutY="671.0" mnemonicParsing="false" onMouseClicked="#onMouseClickExitButton" prefHeight="33.0" prefWidth="150.0" style="-fx-background-color: #D69447;" text="Salir" />
     </children>
 </AnchorPane>

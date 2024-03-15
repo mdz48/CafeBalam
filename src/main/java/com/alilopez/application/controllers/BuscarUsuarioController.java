@@ -8,10 +8,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-public class BuscarClienteController {
+public class BuscarUsuarioController {
 
     @FXML
     private Label alertLabel;
+
+    @FXML
+    private Button buscarButton;
 
     @FXML
     private Button closeButton;
@@ -20,7 +23,19 @@ public class BuscarClienteController {
     private TextField idTextfield;
 
     @FXML
-    private Button buscarButton;
+    void onClickBuscarButton(MouseEvent event) {
+        String contenido = null;
+        if (App.getTienda().searchUsuario(idTextfield.getText()) == null) {
+            contenido = "No se encontró un usuario con ese ID";
+        } else {
+            contenido = App.getTienda().searchProducto(idTextfield.getText());
+        }
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText(contenido);
+        alert.showAndWait();
+    }
 
     @FXML
     void onClickCloseButton(MouseEvent event) {
@@ -28,21 +43,9 @@ public class BuscarClienteController {
     }
 
     @FXML
-    void onClickBuscarButton(MouseEvent event) {
-        String contenido = null;
-        if (App.getTienda().searchCliente(idTextfield.getText()) == null){
-            contenido = "No se encontro un cliente con ese ID";
-        } else{
-            contenido = "Cliente:\n" + App.getTienda().searchCliente(idTextfield.getText());
-        }
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(null);
-        alert.setContentText(contenido);
-        alert.showAndWait();
-    }
-    @FXML
     void initialize() {
         closeButton.setStyle("-fx-font-size: 15px; -fx-font-weight: 700; -fx-alignment: center; -fx-background-color:  #cd812b;");
+
         buscarButton.setStyle("-fx-font-size: 15px; -fx-font-weight: 700; -fx-alignment: center;-fx-background-color:  #cd812b;");
     }
 

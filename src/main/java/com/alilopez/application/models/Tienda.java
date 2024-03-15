@@ -9,6 +9,7 @@ import java.util.UUID;
 public class Tienda {
     private ArrayList<Cliente> clientes = new ArrayList<>();
     private ArrayList<Cafe> productos = new ArrayList<>();
+    private ArrayList<String> tiposProductos = new ArrayList<>();
     private ArrayList<Usuario> usuarios = new ArrayList<>();
     private ArrayList<VentaLocal> ventasLocales = new ArrayList<>();
     private ArrayList<VentaNacional> ventaNacionales = new ArrayList<>();
@@ -44,7 +45,7 @@ public class Tienda {
                 double restante = productos.get(i).getCantidad() - cantidad;
                 productos.get(i).setCantidad(restante);
                 String id = UUID.randomUUID().toString();
-                double monto = productos.get(i).getPrecio()*cantidad;
+                double monto = (productos.get(i).getPrecio()*cantidad)-descuento;
                 LocalDate fecha = LocalDate.now();
                 String idVendedor = App.getUser().getId();
                 VentaLocal ventaLocal = new VentaLocal(id, monto, fecha, cantidad, descuento, idVendedor);
@@ -70,7 +71,17 @@ public class Tienda {
         return flag;
     }
     public boolean addProducto(Cafe cafe){
-        return productos.add(cafe);
+        boolean flag = true;
+        for (int i = 0; i < productos.size(); i++) {
+            if (cafe.getTipo().equals(productos.get(i).getTipo()) && flag){
+                flag = false;
+            }
+        }
+        if (flag) {
+            productos.add(cafe);
+            tiposProductos.add(cafe.getTipo());
+        }
+        return flag;
     }
 
     public ArrayList<Cliente> getClientes() {
@@ -92,11 +103,16 @@ public class Tienda {
     public ArrayList<VentaNacional> getVentaNacionales() {
         return ventaNacionales;
     }
+
+    public ArrayList<String> getTiposProductos() {
+        return tiposProductos;
+    }
+
     public boolean updateClient(String correo, float comprado, float gastado){
         boolean flag = false;
         for (int i = 0; i < clientes.size(); i++) {
             String userMail = clientes.get(i).getCorreo();
-            if (userMail.equals(correo) && !flag && comprado>0 && gastado>0){
+            if (userMail.equals(correo) && !flag && comprado>=0 && gastado>=0){
                 flag = true;
                 clientes.get(i).setComprado(comprado);
                 clientes.get(i).setGastado(gastado);
@@ -104,26 +120,46 @@ public class Tienda {
         }
         return flag;
     }
-    public boolean updateProduct(String id, float cantidad){
+    public boolean updateProduct(String id, double cantidad, float precio, float costo ){
         boolean flag = false;
         for (int i = 0; i < productos.size(); i++) {
-            String productId = productos.get(i).getIdCafe();
-            if (productId.equals(id) && !flag && cantidad>0){
+            String productId = productos.get(i).getTipo();
+            if (productId.equals(id) && !flag && cantidad>=0){
+                flag = true;
+                productos.get(i).setCantidad(cantidad);
+                if (precio > 0) {
+                    productos.get(i).setPrecio(precio);
+                }
+                if (costo > 0) {
+                    productos.get(i).setCosto(costo);
+                }
+            }
+        }
+        return flag;
+    }
+    public boolean updateProduct(String id, double cantidad){
+        boolean flag = false;
+        for (int i = 0; i < productos.size(); i++) {
+            String productId = productos.get(i).getTipo();
+            if (productId.equals(id) && !flag && cantidad>=0){
                 flag = true;
                 productos.get(i).setCantidad(cantidad);
             }
         }
         return flag;
     }
-    public boolean searchUsuario(String id){
+
+    public String searchUsuario(String id){
+        String b = null;
         boolean flag = false;
         for (int i = 0; i < usuarios.size(); i++) {
             String userId = usuarios.get(i).getIdUsuario();
             if (userId.equals(id) && !flag){
+                b = usuarios.get(i).toString();
                 flag = true;
             }
         }
-        return flag;
+        return b;
     }
     public boolean deleteUsuario(String id){
         boolean flag = false;
@@ -131,6 +167,17 @@ public class Tienda {
             String userId = usuarios.get(i).getIdUsuario();
             if (userId.equals(id) && !flag){
                 usuarios.remove(i);
+                flag = true;
+            }
+        }
+        return flag;
+    }
+    public boolean deleteVentaLocal(String id){
+        boolean flag = false;
+        for (int i = 0; i < ventasLocales.size(); i++) {
+            String idVenta = ventasLocales.get(i).getIdVenta();
+            if (idVenta.equals(id) && !flag){
+                ventasLocales.remove(i);
                 flag = true;
             }
         }
@@ -153,13 +200,23 @@ public class Tienda {
         String b = null;
         boolean flag = false;
         for (int i = 0; i < productos.size(); i++) {
-            String productId = productos.get(i).getIdCafe();
+            String productId = productos.get(i).getTipo();
             if (productId.equals(id) && !flag){
                 b = productos.get(i).toString();
                 flag = true;
             }
         }
         return b;
+    }
+    public ArrayList<VentaLocal> searchVentasLocales(LocalDate fecha){
+        ArrayList<VentaLocal> aux = new ArrayList<>();
+        for (int i = 0; i < ventasLocales.size(); i++) {
+            LocalDate date = ventasLocales.get(i).getFecha();
+            if (date.equals(fecha)) {
+                aux.add(ventasLocales.get(i));
+            }
+        }
+        return aux;
     }
     public boolean deleteCliente(String correo){
         boolean flag = false;
@@ -176,7 +233,7 @@ public class Tienda {
     public boolean deleteProducto(String id){
         boolean flag = false;
         for (int i = 0; i < productos.size(); i++) {
-            String productId = productos.get(i).getIdCafe();
+            String productId = productos.get(i).getTipo();
             if (productId.equals(id) && !flag){
                 productos.remove(i);
                 flag = true;

@@ -38,7 +38,7 @@
                 <Font name="System Bold" size="20.0" />
             </font>
         </Button>
-        <Label fx:id="alertLabel" layoutX="162.0" layoutY="420.0" prefHeight="22.0" prefWidth="393.0" style="-fx-alignment: center;" textFill="#ba7e37">
+        <Label fx:id="alertLabel" layoutX="198.0" layoutY="422.0" prefHeight="22.0" prefWidth="393.0" style="-fx-alignment: center;" textFill="#ba7e37">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
@@ -60,7 +60,7 @@
             </font>
         </Label>
         <TextField fx:id="edadTextfield" layoutX="35.0" layoutY="344.0" prefHeight="50.0" prefWidth="298.0" />
-      <Label layoutX="395.0" layoutY="130.0" style="-fx-alignment: center;" text="ID" textAlignment="CENTER" textFill="#ba7e37">
+      <Label layoutX="401.0" layoutY="119.0" style="-fx-alignment: center;" text="ID" textAlignment="CENTER" textFill="#ba7e37">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -72,6 +72,6 @@
          </font>
       </Label>
       <TextField fx:id="passwordTextField" layoutX="395.0" layoutY="248.0" prefHeight="50.0" prefWidth="298.0" />
-      <ComboBox fx:id="cargoComboBox" layoutX="399.0" layoutY="61.0" onAction="#selectComboBox" prefHeight="50.0" prefWidth="298.0" />
+      <ComboBox fx:id="cargoComboBox" layoutX="399.0" layoutY="61.0" onAction="#selectComboBox" prefHeight="50.0" prefWidth="298.0" promptText="Seleccionar" />
     </children>
 </AnchorPane>

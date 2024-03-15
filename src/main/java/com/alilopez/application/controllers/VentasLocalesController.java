@@ -17,8 +17,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class VentasLocalesController {
+
+    private ArrayList<VentaLocal> ventasAux = new ArrayList<>();
 
     @FXML
     private TableView<VentaLocal> ventasLocalesTable;
@@ -30,10 +33,10 @@ public class VentasLocalesController {
     private Button buscarButton;
 
     @FXML
-    private TableColumn<Venta, Integer> colCantidad;
+    private TableColumn<VentaLocal, Integer> colCantidad;
 
     @FXML
-    private TableColumn<Venta, String> colIdVenta;
+    private TableColumn<VentaLocal, String> colIdVenta;
 
     @FXML
     private Button exitButton;
@@ -42,7 +45,7 @@ public class VentasLocalesController {
     private TableColumn<VentaLocal, String> colIDVendedor;
 
     @FXML
-    private TableColumn<Venta, Integer> colMonto;
+    private TableColumn<VentaLocal, Integer> colMonto;
 
     @FXML
     private TableColumn<VentaLocal, Integer> colDescuento;
@@ -51,7 +54,7 @@ public class VentasLocalesController {
     private Button removeButton;
 
     @FXML
-    private TableColumn<Venta, LocalDate> colFecha;
+    private TableColumn<VentaLocal, LocalDate> colFecha;
 
     @FXML
     void onClickAddButton(MouseEvent event) {
@@ -60,13 +63,13 @@ public class VentasLocalesController {
 
     @FXML
     void onClickBuscarButton(MouseEvent event) {
-        App.newStage("buscarProduct-view", "App - Buscar Producto");
+        App.newStage("buscarVentaLocal-view", "App - Buscar Venta Local");
     }
 
 
     @FXML
     void onClickRemoveButton(MouseEvent event) {
-        App.newStage("removeProduct-view", "App - Eliminar Producto");
+        App.newStage("removeVentaLocal-view", "App - Eliminar Venta Local");
     }
 
     @FXML
@@ -82,6 +85,7 @@ public class VentasLocalesController {
         }
     }
 
+
     @FXML
     public void initialize() {
         colIdVenta.setCellValueFactory(new PropertyValueFactory<>("idVenta"));
@@ -90,8 +94,10 @@ public class VentasLocalesController {
         colCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
         colDescuento.setCellValueFactory(new PropertyValueFactory<>("descuentoLocal"));
         colIDVendedor.setCellValueFactory(new PropertyValueFactory<>("idVendedor"));
+
         ObservableList<VentaLocal> ventas = FXCollections.observableArrayList(App.getTienda().getVentasLocales());
         ventasLocalesTable.setItems(ventas);
     }
+
 
 }

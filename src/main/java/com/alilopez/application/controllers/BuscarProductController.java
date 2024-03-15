@@ -43,10 +43,9 @@ public class BuscarProductController {
     }
     @FXML
     void initialize() {
-        closeButton.getStyleClass().setAll("btn","btn-danger");
-        closeButton.setStyle("-fx-font-size: 15px; -fx-font-weight: 700; -fx-alignment: center;");
-        buscarButton.getStyleClass().setAll("btn","btn-success");
-        buscarButton.setStyle("-fx-font-size: 15px; -fx-font-weight: 700; -fx-alignment: center;");
+        closeButton.setStyle("-fx-font-size: 15px; -fx-font-weight: 700; -fx-alignment: center; -fx-background-color:  #cd812b;");
+
+        buscarButton.setStyle("-fx-font-size: 15px; -fx-font-weight: 700; -fx-alignment: center;-fx-background-color:  #cd812b;");
     }
 
 }

@@ -50,6 +50,14 @@ public class Cafe {
         this.cantidad = cantidad;
     }
 
+    public void setPrecio(float precio) {
+        this.precio = precio;
+    }
+
+    public void setCosto(float costo) {
+        this.costo = costo;
+    }
+
     @Override
     public String toString() {
         return  "Nombre: " + nombre + '\n' +

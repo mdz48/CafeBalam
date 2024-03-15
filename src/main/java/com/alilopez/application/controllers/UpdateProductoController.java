@@ -1,10 +1,11 @@
 package com.alilopez.application.controllers;
 
 import com.alilopez.application.App;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
 public class UpdateProductoController {
@@ -22,7 +23,13 @@ public class UpdateProductoController {
     private Button saveButton;
 
     @FXML
-    private TextField idTextField;
+    private TextField precioTextField;
+
+    @FXML
+    private TextField costoTextField;
+
+    @FXML
+    private ComboBox<String> tipoComboBox;
 
     @FXML
     void onClickCloseButton(MouseEvent event) {
@@ -30,20 +37,82 @@ public class UpdateProductoController {
     }
 
     @FXML
+    void onActionTipoComboBox(ActionEvent event) {}
+
+    @FXML
     void onClickSaveButton(MouseEvent event) {
-       if(App.getTienda().updateProduct(idTextField.getText(), Integer.parseInt(cantidadTextField.getText()))){
-           alertLabel.setText("Cambios Guardados!");
-       } else {
-           alertLabel.setText("No encontró el ID");
-       }
+        float precio = 0;
+        float costo = 0;
+        String tipo = tipoComboBox.getValue();
+        if (!(tipoComboBox.getValue() == null)){
+            if (!(precioTextField.getText().isEmpty()) && !(costoTextField.getText().isEmpty())) {
+                precio = Integer.parseInt(precioTextField.getText());
+                costo = Integer.parseInt(costoTextField.getText());
+                try {
+                    double cantidad = Integer.parseInt(cantidadTextField.getText());
+                    if(App.getTienda().updateProduct(tipo, cantidad, precio, costo)){
+                        String contenido = "Cambios guardados!";
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setHeaderText(null);
+                        alert.setContentText(contenido);
+                        alert.showAndWait();
+                    } else {
+                        String contenido = "No se pudo realizar los cambios";
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setHeaderText(null);
+                        alert.setContentText(contenido);
+                        alert.showAndWait();
+                    }
+                } catch (NumberFormatException e){
+                    String contenido = "numero invalido";
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setContentText(contenido);
+                    alert.showAndWait();
+                }
+            } else {
+                try {
+                    double cantidad = Integer.parseInt(cantidadTextField.getText());
+                    if(App.getTienda().updateProduct(tipo, cantidad)){
+                        String contenido = "Cantidad cambiada!";
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setHeaderText(null);
+                        alert.setContentText(contenido);
+                        alert.showAndWait();
+                    } else {
+                        String contenido = "No se pudo realizar el cambio";
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setHeaderText(null);
+                        alert.setContentText(contenido);
+                        alert.showAndWait();
+                    }
+                } catch (NumberFormatException e){
+                    String contenido = "numero invalido";
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setContentText(contenido);
+                    alert.showAndWait();
+                }
+            }
+
+
+        } else {
+            String contenido = "Seleccione un tipo de producto";
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText(contenido);
+            alert.showAndWait();
+        }
+
+
     }
 
     @FXML
     void initialize() {
-        closeButton.getStyleClass().setAll("btn","btn-gl","btn-danger");
-        closeButton.setStyle("-fx-font-size: 20px; -fx-font-weight: 900; -fx-alignment: center;");
-        saveButton.getStyleClass().setAll("btn","btn-gl","btn-success");
-        saveButton.setStyle("-fx-font-size: 20px; -fx-font-weight: 900; -fx-alignment: center;");
+        closeButton.setStyle("-fx-font-size: 15px; -fx-font-weight: 700; -fx-alignment: center; -fx-background-color:  #cd812b;");
+        saveButton.setStyle("-fx-font-size: 15px; -fx-font-weight: 700; -fx-alignment: center;-fx-background-color:  #cd812b;");
+        ObservableList<String> list = FXCollections.observableArrayList(App.getTienda().getTiposProductos());
+        tipoComboBox.setItems(list);
     }
 
 }

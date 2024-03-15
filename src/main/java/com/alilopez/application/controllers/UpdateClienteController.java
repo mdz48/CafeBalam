@@ -46,10 +46,9 @@ public class UpdateClienteController {
 
     @FXML
     void initialize() {
-        closeButton.getStyleClass().setAll("btn","btn-gl","btn-danger");
-        closeButton.setStyle("-fx-font-size: 20px; -fx-font-weight: 900; -fx-alignment: center;");
-        saveButton.getStyleClass().setAll("btn","btn-gl","btn-success");
-        saveButton.setStyle("-fx-font-size: 20px; -fx-font-weight: 900; -fx-alignment: center;");
+        closeButton.setStyle("-fx-font-size: 15px; -fx-font-weight: 700; -fx-alignment: center; -fx-background-color:  #cd812b;");
+
+        saveButton.setStyle("-fx-font-size: 15px; -fx-font-weight: 700; -fx-alignment: center;-fx-background-color:  #cd812b;");
     }
 
 }
