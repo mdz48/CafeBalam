@@ -1,5 +1,6 @@
 package com.alilopez.application;
 
+import com.alilopez.application.models.Caja;
 import com.alilopez.application.models.Login;
 import com.alilopez.application.models.Tienda;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,7 @@ public class App extends javafx.application.Application {
     private static Stage stageRoot;
     private static Tienda tienda = new Tienda();
     private static Login user = new Login();
+    private static Caja caja = new Caja(false);
     @Override
     public void start(Stage stage) throws IOException {
         stageRoot = stage;
@@ -71,4 +73,7 @@ public class App extends javafx.application.Application {
         return user;
     }
 
+    public static Caja getCaja() {
+        return caja;
+    }
 }

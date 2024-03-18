@@ -13,6 +13,7 @@ public class Tienda {
     private ArrayList<Usuario> usuarios = new ArrayList<>();
     private ArrayList<VentaLocal> ventasLocales = new ArrayList<>();
     private ArrayList<VentaNacional> ventaNacionales = new ArrayList<>();
+    private ArrayList<Caja> historial = new ArrayList<>();
     public ArrayList<Cliente> getClientes() {
         return clientes;
     }
@@ -28,10 +29,54 @@ public class Tienda {
     public ArrayList<VentaNacional> getVentaNacionales() {
         return ventaNacionales;
     }
+
+    public ArrayList<Caja> getHistorial() {
+        return historial;
+    }
+
     public ArrayList<String> getTiposProductos() {
         return tiposProductos;
     }
 
+    public boolean openAction(Caja caja){
+        return historial.add(caja);
+    }
+
+    public boolean closeCaja(String idCaja){
+        double montoLocal = 0;
+        double montoNacional = 0;
+        double total;
+        Caja caja = null;
+        boolean flag = false;
+        for (int i = 0; i < historial.size(); i++) {
+            if (historial.get(i).getIdCaja().equals(idCaja) && !flag) {
+                caja = historial.get(i);
+                flag = true;
+            }
+        }
+        if (flag) {
+            for (int i = 0; i < ventasLocales.size(); i++) {
+                VentaLocal ventaAux = ventasLocales.get(i);
+                if (ventaAux.getFecha().equals(caja.getFecha())) {
+                    montoLocal += ventaAux.getMonto();
+                }
+            }
+            for (int i = 0; i < ventaNacionales.size(); i++) {
+                VentaNacional ventaAux = ventaNacionales.get(i);
+                if (ventaAux.getFecha().equals(caja.getIdCaja())){
+                    montoNacional += ventaAux.getMonto();
+                }
+            }
+            total = montoNacional + montoLocal;
+
+            for (int i = 0; i < historial.size(); i++) {
+                if (historial.get(i).getIdCaja().equals(idCaja) && !flag) {
+                    historial.get(i).setMonto(total);
+                }
+            }
+        }
+        return flag;
+    }
 
     public boolean addCliente(Cliente cliente){
         boolean flag = false;
