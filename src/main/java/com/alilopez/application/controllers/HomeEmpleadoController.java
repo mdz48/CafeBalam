@@ -24,7 +24,10 @@ public class HomeEmpleadoController {
 
 
     @FXML
-    private Button ventaButton;
+    private Button ventaLocalButton;
+
+    @FXML
+    private Button ventaNacionalButton;
 
     @FXML
     void onClickCajaButton(MouseEvent event) {
@@ -38,8 +41,15 @@ public class HomeEmpleadoController {
     }
 
     @FXML
-    void onClickVentaButton(MouseEvent event) {
+    void onClickVentaLocalButton(MouseEvent event) throws IOException {
+        App escena = new App();
+        escena.changeScene("ventasLocales-view.fxml");
+    }
 
+    @FXML
+    void onClickVentaNacionalButton(MouseEvent event) throws IOException {
+        App escena = new App();
+        escena.changeScene("ventasNacionales-view.fxml");
     }
 
     @FXML
@@ -50,5 +60,15 @@ public class HomeEmpleadoController {
     void onMouseClickExitButton(MouseEvent event) throws IOException, IOException {
         App escena = new App();
         escena.changeScene("login-view.fxml");
+    }
+
+    @FXML
+    void initialize() {
+        cajaButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
+        clienteButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
+        historialButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
+        ventaLocalButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
+        ventaNacionalButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
+        exitButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
     }
 }

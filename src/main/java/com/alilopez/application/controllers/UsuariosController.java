@@ -69,20 +69,7 @@ public class UsuariosController {
 
     @FXML
     void onClickRemoveButton(MouseEvent event) {
-        if (App.getTienda().deleteUsuario(usuariosTable.getSelectionModel().getSelectedItem().getIdUsuario())){
-            String contenido = "Se eliminó el usuario";
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText(null);
-            alert.setContentText(contenido);
-            alert.showAndWait();
-        } else {
-            String contenido = "No se pudo eliminar";
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText(null);
-            alert.setContentText(contenido);
-            alert.showAndWait();
-        }
-//        App.newStage("removeCliente-view", "App - Remove Usuario");
+        App.newStage("removeUsuario-view", "App - Remove Usuario");
     }
 
     @FXML

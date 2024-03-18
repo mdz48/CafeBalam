@@ -13,6 +13,26 @@ public class Tienda {
     private ArrayList<Usuario> usuarios = new ArrayList<>();
     private ArrayList<VentaLocal> ventasLocales = new ArrayList<>();
     private ArrayList<VentaNacional> ventaNacionales = new ArrayList<>();
+    public ArrayList<Cliente> getClientes() {
+        return clientes;
+    }
+    public ArrayList<Usuario> getUsuarios() {
+        return usuarios;
+    }
+    public ArrayList<VentaLocal> getVentasLocales() {
+        return ventasLocales;
+    }
+    public ArrayList<Cafe> getProductos() {
+        return productos;
+    }
+    public ArrayList<VentaNacional> getVentaNacionales() {
+        return ventaNacionales;
+    }
+    public ArrayList<String> getTiposProductos() {
+        return tiposProductos;
+    }
+
+
     public boolean addCliente(Cliente cliente){
         boolean flag = false;
         for (int i = 0; i < clientes.size(); i++) {
@@ -83,31 +103,6 @@ public class Tienda {
         }
         return flag;
     }
-
-    public ArrayList<Cliente> getClientes() {
-        return clientes;
-    }
-
-    public ArrayList<Usuario> getUsuarios() {
-        return usuarios;
-    }
-
-    public ArrayList<VentaLocal> getVentasLocales() {
-        return ventasLocales;
-    }
-
-    public ArrayList<Cafe> getProductos() {
-        return productos;
-    }
-
-    public ArrayList<VentaNacional> getVentaNacionales() {
-        return ventaNacionales;
-    }
-
-    public ArrayList<String> getTiposProductos() {
-        return tiposProductos;
-    }
-
     public boolean updateClient(String correo, float comprado, float gastado){
         boolean flag = false;
         for (int i = 0; i < clientes.size(); i++) {
@@ -124,15 +119,11 @@ public class Tienda {
         boolean flag = false;
         for (int i = 0; i < productos.size(); i++) {
             String productId = productos.get(i).getTipo();
-            if (productId.equals(id) && !flag && cantidad>=0){
+            if (productId.equals(id) && !flag && cantidad>=0 && precio > 0 && costo > 0){
                 flag = true;
                 productos.get(i).setCantidad(cantidad);
-                if (precio > 0) {
-                    productos.get(i).setPrecio(precio);
-                }
-                if (costo > 0) {
-                    productos.get(i).setCosto(costo);
-                }
+                productos.get(i).setPrecio(precio);
+                productos.get(i).setCosto(costo);
             }
         }
         return flag;
@@ -183,6 +174,18 @@ public class Tienda {
         }
         return flag;
     }
+
+    public boolean deleteVentaNacional(String id){
+        boolean flag = false;
+        for (int i = 0; i < ventaNacionales.size(); i++) {
+            String idVenta = ventaNacionales.get(i).getIdVenta();
+            if (idVenta.equals(id) && !flag){
+                ventaNacionales.remove(i);
+                flag = true;
+            }
+        }
+        return flag;
+    }
     public String searchCliente(String mail){
         String b = null;
         boolean flag = false;
@@ -214,6 +217,17 @@ public class Tienda {
             LocalDate date = ventasLocales.get(i).getFecha();
             if (date.equals(fecha)) {
                 aux.add(ventasLocales.get(i));
+            }
+        }
+        return aux;
+    }
+
+    public ArrayList<VentaNacional> searchVentasNacionales(LocalDate fecha){
+        ArrayList<VentaNacional> aux = new ArrayList<>();
+        for (int i = 0; i < ventaNacionales.size(); i++) {
+            LocalDate date = ventaNacionales.get(i).getFecha();
+            if (date.equals(fecha)) {
+                aux.add(ventaNacionales.get(i));
             }
         }
         return aux;

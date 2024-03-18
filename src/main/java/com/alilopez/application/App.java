@@ -70,4 +70,5 @@ public class App extends javafx.application.Application {
     public static Login getUser() {
         return user;
     }
+
 }

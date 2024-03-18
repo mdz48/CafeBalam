@@ -45,32 +45,7 @@ public class UpdateProductoController {
         float costo = 0;
         String tipo = tipoComboBox.getValue();
         if (!(tipoComboBox.getValue() == null)){
-            if (!(precioTextField.getText().isEmpty()) && !(costoTextField.getText().isEmpty())) {
-                precio = Integer.parseInt(precioTextField.getText());
-                costo = Integer.parseInt(costoTextField.getText());
-                try {
-                    double cantidad = Integer.parseInt(cantidadTextField.getText());
-                    if(App.getTienda().updateProduct(tipo, cantidad, precio, costo)){
-                        String contenido = "Cambios guardados!";
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setHeaderText(null);
-                        alert.setContentText(contenido);
-                        alert.showAndWait();
-                    } else {
-                        String contenido = "No se pudo realizar los cambios";
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setHeaderText(null);
-                        alert.setContentText(contenido);
-                        alert.showAndWait();
-                    }
-                } catch (NumberFormatException e){
-                    String contenido = "numero invalido";
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setHeaderText(null);
-                    alert.setContentText(contenido);
-                    alert.showAndWait();
-                }
-            } else {
+            if (precioTextField.getText().isEmpty() && costoTextField.getText().isEmpty()) {
                 try {
                     double cantidad = Integer.parseInt(cantidadTextField.getText());
                     if(App.getTienda().updateProduct(tipo, cantidad)){
@@ -88,6 +63,32 @@ public class UpdateProductoController {
                     }
                 } catch (NumberFormatException e){
                     String contenido = "numero invalido";
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setContentText(contenido);
+                    alert.showAndWait();
+                }
+
+            } else {
+                try {
+                    double cantidad = Integer.parseInt(cantidadTextField.getText());
+                    precio = Integer.parseInt(precioTextField.getText());
+                    costo = Integer.parseInt(costoTextField.getText());
+                    if(App.getTienda().updateProduct(tipo, cantidad, precio, costo)){
+                        String contenido = "Cambios guardados!";
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setHeaderText(null);
+                        alert.setContentText(contenido);
+                        alert.showAndWait();
+                    } else {
+                        String contenido = "No se pudo realizar los cambios";
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setHeaderText(null);
+                        alert.setContentText(contenido);
+                        alert.showAndWait();
+                    }
+                } catch (NumberFormatException e){
+                    String contenido = "Número invalido ó Campo sin llenar";
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setHeaderText(null);
                     alert.setContentText(contenido);

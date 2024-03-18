@@ -63,7 +63,11 @@ public class NewUsuarioController {
                 if (!(cargoComboBox.getValue() == null)){
                     Usuario user = new Usuario(nombre, apellido, correo, cargo, edad, id, password);
                     if (!App.getTienda().addUsuario(user)){
-                        alertLabel.setText("Se agregó existosamente");
+                        String contenido = "Registro Exitoso";
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setHeaderText(null);
+                        alert.setContentText(contenido);
+                        alert.showAndWait();
                     } else {
                         String contenido = "Este ID ya fue registrado";
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);

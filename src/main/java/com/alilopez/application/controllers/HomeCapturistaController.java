@@ -27,4 +27,10 @@ public class HomeCapturistaController {
         App escena = new App();
         escena.changeScene("login-view.fxml");
     }
+
+    @FXML
+    void initialize() {
+        inventarioButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
+        exitButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
+    }
 }

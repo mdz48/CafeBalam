@@ -1,10 +1,7 @@
 package com.alilopez.application.controllers;
 
 import com.alilopez.application.App;
-import com.alilopez.application.models.Cafe;
-import com.alilopez.application.models.Cliente;
-import com.alilopez.application.models.Venta;
-import com.alilopez.application.models.VentaLocal;
+import com.alilopez.application.models.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,11 +16,11 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class VentasLocalesController {
+public class VentasNacionalesController {
 
 
     @FXML
-    private TableView<VentaLocal> ventasLocalesTable;
+    private TableView<VentaNacional> ventasTable;
 
     @FXML
     private Button addButton;
@@ -32,43 +29,43 @@ public class VentasLocalesController {
     private Button buscarButton;
 
     @FXML
-    private TableColumn<VentaLocal, Integer> colCantidad;
+    private TableColumn<VentaNacional, Integer> colCantidad;
 
     @FXML
-    private TableColumn<VentaLocal, String> colIdVenta;
+    private TableColumn<VentaNacional, String> colIdVenta;
 
     @FXML
     private Button exitButton;
 
     @FXML
-    private TableColumn<VentaLocal, String> colIDVendedor;
+    private TableColumn<VentaNacional, String> colDireccion;
 
     @FXML
-    private TableColumn<VentaLocal, Integer> colMonto;
+    private TableColumn<VentaNacional, Integer> colMonto;
 
     @FXML
-    private TableColumn<VentaLocal, Integer> colDescuento;
+    private TableColumn<VentaNacional, Integer> colCostoEnvio;
 
     @FXML
     private Button removeButton;
 
     @FXML
-    private TableColumn<VentaLocal, LocalDate> colFecha;
+    private TableColumn<VentaNacional, LocalDate> colFecha;
 
     @FXML
     void onClickAddButton(MouseEvent event) {
-        App.newStage("newVentaLocal-view", "App - Venta Local");
+        App.newStage("newVentaNacional-view", "App - Venta Nacional");
     }
 
     @FXML
     void onClickBuscarButton(MouseEvent event) {
-        App.newStage("buscarVentaLocal-view", "App - Buscar Venta Local");
+        App.newStage("buscarVentaNacional-view", "App - Buscar Venta Nacional");
     }
 
 
     @FXML
     void onClickRemoveButton(MouseEvent event) {
-        App.newStage("removeVentaLocal-view", "App - Eliminar Venta Local");
+        App.newStage("removeVentaNacional-view", "App - Eliminar Venta Nacional");
     }
 
     @FXML
@@ -91,11 +88,11 @@ public class VentasLocalesController {
         colMonto.setCellValueFactory(new PropertyValueFactory<>("monto"));
         colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         colCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
-        colDescuento.setCellValueFactory(new PropertyValueFactory<>("descuentoLocal"));
-        colIDVendedor.setCellValueFactory(new PropertyValueFactory<>("idVendedor"));
+        colCostoEnvio.setCellValueFactory(new PropertyValueFactory<>("costoEnvio"));
+        colDireccion.setCellValueFactory(new PropertyValueFactory<>("direccion"));
 
-        ObservableList<VentaLocal> ventas = FXCollections.observableArrayList(App.getTienda().getVentasLocales());
-        ventasLocalesTable.setItems(ventas);
+        ObservableList<VentaNacional> ventas = FXCollections.observableArrayList(App.getTienda().getVentaNacionales());
+        ventasTable.setItems(ventas);
     }
 
 

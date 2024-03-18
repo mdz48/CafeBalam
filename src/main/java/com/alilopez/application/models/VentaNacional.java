@@ -19,4 +19,12 @@ public class VentaNacional extends Venta{
                 ", direccion='" + direccion + '\'' +
                 '}';
     }
+
+    public float getCostoEnvio() {
+        return costoEnvio;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
 }

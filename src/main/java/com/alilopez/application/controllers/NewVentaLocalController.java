@@ -5,10 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
 public class NewVentaLocalController {
@@ -48,9 +45,17 @@ public class NewVentaLocalController {
         }
         String tipo = tipoComboBox.getValue();
         if (App.getTienda().addVentaLocal(cantidad, tipo, descuento)){
-            alertLabel.setText("Venta exitosa");
+            String contenido = "Venta Registrada";
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText(contenido);
+            alert.showAndWait();
         } else {
-            alertLabel.setText("No se pudo realizar");
+            String contenido = "No se pudo realizar la venta";
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText(contenido);
+            alert.showAndWait();
         }
     }
 
