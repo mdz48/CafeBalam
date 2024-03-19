@@ -8,6 +8,7 @@ import com.alilopez.application.models.VentaLocal;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -57,7 +58,15 @@ public class VentasLocalesController {
 
     @FXML
     void onClickAddButton(MouseEvent event) {
-        App.newStage("newVentaLocal-view", "App - Venta Local");
+        if (App.getCaja().isStatus() == true) {
+            App.newStage("newVentaLocal-view", "App - Venta Local");
+        } else {
+            String contenido = "Abra Caja para Realizar una Venta";
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText(contenido);
+            alert.showAndWait();
+        }
     }
 
     @FXML

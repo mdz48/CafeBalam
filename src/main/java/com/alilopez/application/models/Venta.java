@@ -1,14 +1,15 @@
 package com.alilopez.application.models;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Venta {
     protected String idVenta;
     protected double monto;
-    protected LocalDate fecha;
+    protected LocalDateTime fecha;
     protected double cantidad;
 
-    public Venta(String idVenta, double monto, LocalDate fecha, double cantidad) {
+    public Venta(String idVenta, double monto, LocalDateTime fecha, double cantidad) {
         this.idVenta = idVenta;
         this.monto = monto;
         this.fecha = fecha;
@@ -23,7 +24,7 @@ public class Venta {
         return monto;
     }
 
-    public LocalDate getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 

@@ -18,7 +18,7 @@ public class App extends javafx.application.Application {
     private static Stage stageRoot;
     private static Tienda tienda = new Tienda();
     private static Login user = new Login();
-    private static Caja caja = new Caja(false);
+    private static Caja caja = new Caja();
     @Override
     public void start(Stage stage) throws IOException {
         stageRoot = stage;

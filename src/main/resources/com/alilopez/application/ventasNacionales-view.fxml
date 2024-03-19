@@ -18,7 +18,7 @@
             <columns>
                 <TableColumn fx:id="colIdVenta" prefWidth="227.0" text="ID Venta" />
                 <TableColumn fx:id="colMonto" prefWidth="95.0" text="Monto" />
-                <TableColumn fx:id="colFecha" prefWidth="132.0" text="Fecha" />
+                <TableColumn fx:id="colFecha" prefWidth="82.13336181640625" text="Fecha" />
                 <TableColumn fx:id="colCantidad" minWidth="0.0" prefWidth="144.0" text="Cantidad" />
                 <TableColumn fx:id="colCostoEnvio" prefWidth="121.0" text="Costo Envío" />
                 <TableColumn fx:id="colDireccion" prefWidth="259.0" text="Dirección" />

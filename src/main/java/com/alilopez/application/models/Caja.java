@@ -1,25 +1,25 @@
 package com.alilopez.application.models;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Caja {
-    private LocalDate fecha;
+    private LocalDateTime fecha;
     private String idVendedor;
     private double monto;
     private String idCaja;
     private boolean status;
 
-    public Caja(LocalDate fecha, String idVendedor, double monto, String idCaja) {
+    public Caja(LocalDateTime fecha, String idVendedor, double monto) {
         this.fecha = fecha;
         this.idVendedor = idVendedor;
         this.monto = monto;
-        this.idCaja = idCaja;
     }
-    public Caja(boolean status){
-        this.status = status;
+    public Caja(){
+        this.status = false;
     }
 
-    public LocalDate getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 

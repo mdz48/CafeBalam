@@ -25,7 +25,6 @@ public class NewVentaNacionalController {
     @FXML
     private Button saveButton;
 
-
     @FXML
     private TextField direccionTxt;
 
@@ -46,7 +45,7 @@ public class NewVentaNacionalController {
     void onClickSaveButton(MouseEvent event) {
         float costoEnvio;
         float cantidad;
-        if (costoEnvioTxt.getText().isEmpty() || cantidadTxt.getText().isEmpty() || direccionTxt.getText().isEmpty() || tipoComboBox.getValue() == null){
+        if (costoEnvioTxt.getText().isEmpty() || cantidadTxt.getText().isEmpty() || direccionTxt.getText().isEmpty() || tipoComboBox.getValue() == null) {
             String contenido = "Rellene todos los campos";
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText(null);
@@ -79,9 +78,7 @@ public class NewVentaNacionalController {
                 alert.showAndWait();
             }
         }
-
     }
-
     @FXML
     void initialize() {
         closeButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");

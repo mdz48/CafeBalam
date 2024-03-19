@@ -16,8 +16,8 @@
         </ImageView>
         <TableView fx:id="historialTable" layoutX="194.0" layoutY="235.0" prefHeight="400.0" prefWidth="893.0">
             <columns>
-                <TableColumn fx:id="colFecha" minWidth="0.0" prefWidth="195.0" text="Fecha" />
-                <TableColumn fx:id="colIDVendedor" prefWidth="185.0" text="ID Vendedor" />
+                <TableColumn fx:id="colFecha" minWidth="0.0" prefWidth="120.79998779296875" text="Fecha" />
+                <TableColumn fx:id="colIDVendedor" prefWidth="219.20001220703125" text="ID Vendedor" />
                 <TableColumn fx:id="colMonto" minWidth="0.0" prefWidth="177.0" text="Monto" />
                 <TableColumn fx:id="colIdCaja" prefWidth="335.0" text="ID Caja" />
             </columns>

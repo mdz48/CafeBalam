@@ -18,7 +18,7 @@
                 <Font size="24.0" />
             </font>
         </Button>
-        <Button fx:id="openCajaButton" layoutX="142.0" layoutY="492.0" mnemonicParsing="false" onMouseClicked="#onClickOpenCajaButton" prefHeight="51.0" prefWidth="139.0" text="Abrir Caja">
+        <Button fx:id="openCajaButton" layoutX="206.0" layoutY="501.0" mnemonicParsing="false" onMouseClicked="#onClickOpenCajaButton" prefHeight="51.0" prefWidth="174.0" text="Abrir Caja">
             <font>
                 <Font size="24.0" />
             </font>
@@ -43,7 +43,7 @@
                 <Font size="24.0" />
             </font>
         </Button>
-      <Button fx:id="closeCajaButton" layoutX="315.0" layoutY="492.0" mnemonicParsing="false" onMouseClicked="#onClickCloseCajaButton" prefHeight="51.0" prefWidth="174.0" text="Cerrar Caja">
+      <Button fx:id="closeCajaButton" layoutX="205.0" layoutY="501.0" mnemonicParsing="false" onMouseClicked="#onClickCloseCajaButton" prefHeight="51.0" prefWidth="174.0" text="Cerrar Caja" visible="false">
          <font>
             <Font size="24.0" />
          </font>

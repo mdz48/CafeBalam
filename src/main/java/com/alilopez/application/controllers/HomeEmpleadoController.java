@@ -9,11 +9,13 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class HomeEmpleadoController {
 
-    private String idCaja;
+    private static LocalDateTime entrada;
+    private static LocalDateTime salida;
 
     @FXML
     private Button openCajaButton;
@@ -40,27 +42,16 @@ public class HomeEmpleadoController {
 
     @FXML
     void onClickOpenCajaButton(MouseEvent event) {
-
         if (App.getCaja().isStatus() == false) {
+            entrada = LocalDateTime.now();
+            openCajaButton.setVisible(false);
+            closeCajaButton.setVisible(true);
             App.getCaja().setStatus(true);
-            LocalDate hoy = LocalDate.now();
-            String idVendedor = App.getUser().getId();
-            double monto = 0;
-            idCaja = UUID.randomUUID().toString();
-            Caja caja = new Caja(hoy, idVendedor, monto, idCaja);
-            if (App.getTienda().openAction(caja)) {
-                String contenido = "Bienvenido " + idVendedor;
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setHeaderText(null);
-                alert.setContentText(contenido);
-                alert.showAndWait();
-            } else {
-                String contenido = "No se pudo realizar la acción";
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setHeaderText(null);
-                alert.setContentText(contenido);
-                alert.showAndWait();
-            }
+            String contenido = "Caja abierta por " + App.getUser().getId();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText(contenido);
+            alert.showAndWait();
         } else {
             String contenido = "No se pudo realizar la acción";
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -73,8 +64,11 @@ public class HomeEmpleadoController {
     @FXML
     void onClickCloseCajaButton(MouseEvent event) {
         if (App.getCaja().isStatus() == true){
-            App.getCaja().setStatus(false);
-            if (App.getTienda().closeCaja(idCaja)) {
+            salida = LocalDateTime.now();
+            if (App.getTienda().closeCaja(entrada, salida)) {
+                App.getCaja().setStatus(false);
+                closeCajaButton.setVisible(false);
+                openCajaButton.setVisible(true);
                 String contenido = "Caja Cerrada por: " + App.getUser().getId();
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setHeaderText(null);
@@ -88,7 +82,7 @@ public class HomeEmpleadoController {
                 alert.showAndWait();
             }
         } else {
-            String contenido = "No se pudo realizar la acción";
+            String contenido = "Ya has abierto caja";
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText(null);
             alert.setContentText(contenido);
@@ -132,11 +126,17 @@ public class HomeEmpleadoController {
             alert.setContentText(contenido);
             alert.showAndWait();
         }
-        }
-
+    }
 
     @FXML
     void initialize() {
+        if (App.getCaja().isStatus() == false) {
+            closeCajaButton.setVisible(false);
+            openCajaButton.setVisible(true);
+        } else {
+            closeCajaButton.setVisible(true);
+            openCajaButton.setVisible(false);
+        }
         openCajaButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
         closeCajaButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
         clienteButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");

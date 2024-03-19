@@ -28,11 +28,6 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="cajaButton" layoutX="224.0" layoutY="492.0" mnemonicParsing="false" onMouseClicked="#onClickCajaButton" prefHeight="51.0" prefWidth="139.0" text="Caja">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
       <Button fx:id="historialButton" alignment="CENTER" layoutX="386.0" layoutY="364.0" mnemonicParsing="false" onMouseClicked="#onClickHistorialButton" prefHeight="93.0" prefWidth="160.0" text="Historial de Ventas" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="24.0" />
@@ -49,6 +44,16 @@
          </font>
       </Button>
       <Button fx:id="ventaLocalButton" layoutX="61.0" layoutY="361.0" mnemonicParsing="false" onMouseClicked="#onClickVentaLocalButton" prefHeight="100.0" prefWidth="139.0" text="Venta Local" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="openCajaButton" layoutX="216.0" layoutY="511.0" mnemonicParsing="false" onMouseClicked="#onClickOpenCajaButton" prefHeight="51.0" prefWidth="174.0" text="Abrir Caja">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="closeCajaButton" layoutX="215.0" layoutY="511.0" mnemonicParsing="false" onMouseClicked="#onClickCloseCajaButton" prefHeight="51.0" prefWidth="174.0" text="Cerrar Caja" visible="false">
          <font>
             <Font size="24.0" />
          </font>
