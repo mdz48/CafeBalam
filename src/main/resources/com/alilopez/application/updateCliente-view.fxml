@@ -25,18 +25,12 @@
                 <Font size="20.0" />
             </font>
         </Button>
-      <Label layoutX="65.0" layoutY="137.0" text="Kilos Comprados" textFill="#ba7e37">
+      <Label layoutX="65.0" layoutY="137.0" text="Comprado" textFill="#ba7e37">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="compradoTextField" layoutX="66.0" layoutY="178.0" prefHeight="25.0" prefWidth="275.0" />
-      <Label layoutX="66.0" layoutY="221.0" text="Gastado" textFill="#ba7e37">
-         <font>
-            <Font name="System Bold" size="17.0" />
-         </font>
-      </Label>
-      <TextField fx:id="gastadoTextField" layoutX="66.0" layoutY="262.0" prefHeight="25.0" prefWidth="275.0" />
+      <TextField fx:id="compradoTextField" layoutX="66.0" layoutY="178.0" prefHeight="26.0" prefWidth="250.0" />
       <Label fx:id="alertLabel" layoutX="76.0" layoutY="328.0" prefHeight="26.0" prefWidth="448.0" style="-fx-alignment: center;" textFill="#ba7e37">
          <font>
             <Font name="System Bold" size="17.0" />
@@ -47,6 +41,12 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="idTextField" layoutX="66.0" layoutY="95.0" prefHeight="25.0" prefWidth="275.0" />
+      <TextField fx:id="idTextField" layoutX="66.0" layoutY="95.0" prefHeight="26.0" prefWidth="250.0" />
+      <Label layoutX="61.0" layoutY="235.0" text="Gastado" textFill="#ba7e37">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="gastadoTextField" layoutX="62.0" layoutY="276.0" prefHeight="26.0" prefWidth="250.0" />
     </children>
 </AnchorPane>

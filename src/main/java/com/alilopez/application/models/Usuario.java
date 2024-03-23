@@ -21,6 +21,14 @@ public class Usuario {
         this.password = password;
     }
 
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getIdUsuario() {
         return idUsuario;
     }

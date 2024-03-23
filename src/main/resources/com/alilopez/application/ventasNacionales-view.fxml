@@ -29,6 +29,21 @@
                 <Button fx:id="buscarButton" layoutX="75.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#onClickBuscarButton" prefHeight="29.0" prefWidth="91.0" style="-fx-background-color: #D69447;" text="Buscar" />
                 <Button fx:id="addButton" layoutX="211.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#onClickAddButton" prefHeight="29.0" prefWidth="91.0" style="-fx-background-color: #D69447;" text="Agregar" />
                 <Button fx:id="removeButton" layoutX="354.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#onClickRemoveButton" prefHeight="29.0" prefWidth="91.0" style="-fx-background-color: #D69447;" text="Eliminar" />
+            <ImageView fitHeight="30.0" fitWidth="38.0" layoutX="319.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/basura.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="38.0" layoutX="173.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/agregar.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="38.0" layoutX="32.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/busqueda.png" />
+               </image>
+            </ImageView>
             </children>
         </AnchorPane>
         <Button fx:id="exitButton" layoutX="566.0" layoutY="671.0" mnemonicParsing="false" onMouseClicked="#onMouseClickExitButton" prefHeight="33.0" prefWidth="150.0" style="-fx-background-color: #D69447;" text="Salir" />

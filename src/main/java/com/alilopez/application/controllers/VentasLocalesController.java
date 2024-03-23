@@ -102,9 +102,9 @@ public class VentasLocalesController {
         colCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
         colDescuento.setCellValueFactory(new PropertyValueFactory<>("descuentoLocal"));
         colIDVendedor.setCellValueFactory(new PropertyValueFactory<>("idVendedor"));
-
         ObservableList<VentaLocal> ventas = FXCollections.observableArrayList(App.getTienda().getVentasLocales());
         ventasLocalesTable.setItems(ventas);
+        ventasLocalesTable.setStyle("-fx-background-color:  #026336;");
     }
 
 

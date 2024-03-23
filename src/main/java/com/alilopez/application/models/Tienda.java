@@ -140,6 +140,31 @@ public class Tienda {
         }
         return flag;
     }
+
+    public boolean updateUsuario(String id, int edad, String pass){
+        boolean flag = false;
+        for (int i = 0; i < clientes.size(); i++) {
+            String userID = usuarios.get(i).getIdUsuario();
+            if (userID.equals(id) && !flag && edad >=15){
+                flag = true;
+                usuarios.get(i).setEdad(edad);
+                usuarios.get(i).setPassword(pass);
+            }
+        }
+        return flag;
+    }
+
+    public boolean updateUsuario(String id,  String pass){
+        boolean flag = false;
+        for (int i = 0; i < clientes.size(); i++) {
+            String userID = usuarios.get(i).getIdUsuario();
+            if (userID.equals(id) && !flag){
+                flag = true;
+                usuarios.get(i).setPassword(pass);
+            }
+        }
+        return flag;
+    }
     public boolean updateProduct(String id, double cantidad, float precio, float costo ){
         boolean flag = false;
         for (int i = 0; i < productos.size(); i++) {
