@@ -15,13 +15,13 @@ public class VentaLocal extends Venta{
 
     @Override
     public String toString() {
-        return "VentaLocal{" +
-                "descuentoLocal=" + descuentoLocal + '\n' +
-                ", idVendedor='" + idVendedor +  '\n' +
-                ", idVenta='" + idVenta + '\n' +
-                ", monto=" + monto +  '\n' +
-                ", fecha=" + fecha.toLocalDate() +  '\n' +
-                ", cantidad=" + cantidad +  '\n';
+        return "VentaLocal" + '\n' +
+                "Descuento local: " + descuentoLocal + '\n' +
+                "Id Vendedor: " + idVendedor +  '\n' +
+                "Id Venta: " + idVenta + '\n' +
+                "Monto: " + monto +  '\n' +
+                "Fecha: " + fecha.toLocalDate() +  '\n' +
+                "Cantidad: " + cantidad +  '\n';
     }
 
     public double getMonto(){

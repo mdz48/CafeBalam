@@ -1,6 +1,5 @@
 package com.alilopez.application.models;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class VentaNacional extends Venta{
@@ -18,5 +17,16 @@ public class VentaNacional extends Venta{
 
     public String getDireccion() {
         return direccion;
+    }
+
+    @Override
+    public String toString() {
+        return "VentaNacional" + '\n' +
+                "Costo Envio: " + costoEnvio + '\n' +
+                "Dirección: " + direccion + '\n' +
+                "Id Venta: " + idVenta + '\n' +
+                "Monto: " + monto + '\n' +
+                "Fecha: " + fecha.toLocalDate() + '\n' +
+                "Cantidad: " + cantidad;
     }
 }

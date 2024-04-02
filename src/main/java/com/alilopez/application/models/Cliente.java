@@ -52,13 +52,12 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" +
-                ", nombre='" + nombre + "\n" +
-                ", lastname='" + lastname + "\n" +
-                ", correo='" + correo + "\n" +
-                ", telefono=" + telefono + "\n" +
-                ", gastado=" + gastado + "\n" +
-                ", comprado=" + comprado + "\n" +
-                '}';
+        return "Cliente" +
+                "Nombre: " + nombre + "\n" +
+                "Lastname: " + lastname + "\n" +
+                "Correo: " + correo + "\n" +
+                "Telefono: " + telefono + "\n" +
+                "Gastado: " + gastado + "\n" +
+                "Comprado: " + comprado + "\n";
     }
 }
