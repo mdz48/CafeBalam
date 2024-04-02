@@ -44,28 +44,43 @@ public class NewProductController {
     }
     @FXML
     void onClickSaveButton(MouseEvent event) {
-        String nombre = nombreTextfield.getText();
-        String tipo = tipoTextField.getText();
-        float costo = Integer.parseInt(costoTextField.getText());
-        float precio = Integer.parseInt(precioTextField.getText());
-        float peso = Integer.parseInt(pesoTextField.getText());
-        float cantidad = Integer.parseInt(cantidadTextField.getText());
-        UUID randomId = UUID.randomUUID();
-        String id = randomId.toString();
-        Cafe cafe = new Cafe(precio, peso, id, nombre, cantidad, tipo, costo);
-        if (App.getTienda().addProducto(cafe)){
-            String contenido = "Se agregó exitósamente";
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText(null);
-            alert.setContentText(contenido);
-            alert.showAndWait();
+        if (!(precioTextField.getText().isEmpty() || tipoTextField.getText().isEmpty() || costoTextField.getText().isEmpty() || precioTextField.getText().isEmpty() || pesoTextField.getText().isEmpty() || cantidadTextField.getText().isEmpty())){
+            try{
+                String nombre = nombreTextfield.getText();
+                String tipo = tipoTextField.getText();
+                float costo = Integer.parseInt(costoTextField.getText());
+                float precio = Integer.parseInt(precioTextField.getText());
+                float peso = Integer.parseInt(pesoTextField.getText());
+                float cantidad = Integer.parseInt(cantidadTextField.getText());
+                Cafe cafe = new Cafe(precio, peso, nombre, cantidad, tipo, costo);
+                if (App.getTienda().addProducto(cafe)){
+                    String contenido = "Se agregó exitósamente";
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setContentText(contenido);
+                    alert.showAndWait();
+                } else {
+                    String contenido = "Tipo de producto ya existente";
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setContentText(contenido);
+                    alert.showAndWait();
+                }
+            } catch (NumberFormatException e){
+                String contenido = "Ingrese números válidos";
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText(contenido);
+                alert.showAndWait();
+            }
         } else {
-            String contenido = "Tipo de producto ya existente";
+            String contenido = "Rellene todos los campos";
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText(null);
             alert.setContentText(contenido);
             alert.showAndWait();
         }
+
     }
     @FXML
     void initialize() {

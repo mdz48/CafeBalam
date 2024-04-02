@@ -26,8 +26,6 @@ public class HomeEmpleadoController {
     @FXML
     private Button exitButton;
 
-    @FXML
-    private Button historialButton;
 
 
     @FXML
@@ -110,11 +108,6 @@ public class HomeEmpleadoController {
     }
 
     @FXML
-    void onClickHistorialButton(MouseEvent event) throws IOException {
-        App escena = new App();
-        escena.changeScene("historial-view.fxml");
-    }
-    @FXML
     void onMouseClickExitButton(MouseEvent event) throws IOException, IOException {
         if (App.getCaja().isStatus() == false) {
             App escena = new App();
@@ -140,7 +133,6 @@ public class HomeEmpleadoController {
         openCajaButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
         closeCajaButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
         clienteButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
-        historialButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
         ventaLocalButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
         ventaNacionalButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
         exitButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");

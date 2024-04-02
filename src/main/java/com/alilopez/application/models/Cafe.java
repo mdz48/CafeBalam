@@ -3,23 +3,17 @@ package com.alilopez.application.models;
 public class Cafe {
     private float precio;
     private float peso;
-    private String idCafe;
     private String nombre;
     private double cantidad;
     private String tipo;
     private float costo;
-    public Cafe(float precio, float peso, String idCafe, String nombre, double cantidad, String tipo, float costo) {
+    public Cafe(float precio, float peso, String nombre, double cantidad, String tipo, float costo) {
         this.precio = precio;
         this.peso = peso;
-        this.idCafe = idCafe;
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.tipo = tipo;
         this.costo = costo;
-    }
-
-    public String getIdCafe() {
-        return idCafe;
     }
 
     public float getPrecio() {
@@ -65,7 +59,6 @@ public class Cafe {
                 "Precio: " + precio + "\n" +
                 "Peso: " + peso + "\n" +
                 "Cantidad: " + cantidad + '\n' +
-                "Costo: " + costo + '\n' +
-                "ID: " + idCafe + '\n';
+                "Costo: " + costo + '\n';
     }
 }

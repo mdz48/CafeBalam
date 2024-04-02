@@ -49,54 +49,62 @@ public class NewUsuarioController {
     }
     @FXML
     void onClickSaveButton(MouseEvent event) {
-
-        String nombre = nombreTextfield.getText();
-        String apellido = lastnameTextfield.getText();
-        String correo = correoTextField.getText();
-        String cargo = cargoComboBox.getValue();
-        int edad;
-        String id = idTextField.getText();
-        String password = passwordTextField.getText();
-        try{
-            edad = Integer.parseInt(edadTextfield.getText());
-            if (edad > 0 && edad <= 100) {
-                if (!(cargoComboBox.getValue() == null)){
-                    Usuario user = new Usuario(nombre, apellido, correo, cargo, edad, id, password);
-                    if (!App.getTienda().addUsuario(user)){
-                        String contenido = "Registro Exitoso";
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setHeaderText(null);
-                        alert.setContentText(contenido);
-                        alert.showAndWait();
+        if (!(nombreTextfield.getText().isEmpty() || lastnameTextfield.getText().isEmpty() || correoTextField.getText().isEmpty() || edadTextfield.getText().isEmpty() || idTextField.getText().isEmpty() || passwordTextField.getText().isEmpty())){
+            try{
+                String nombre = nombreTextfield.getText();
+                String apellido = lastnameTextfield.getText();
+                String correo = correoTextField.getText();
+                String cargo = cargoComboBox.getValue();
+                String id = idTextField.getText();
+                String password = passwordTextField.getText();
+                int edad = Integer.parseInt(edadTextfield.getText());
+                if (edad >= 14 && edad <= 100) {
+                    if (!(cargoComboBox.getValue() == null)){
+                        Usuario user = new Usuario(nombre, apellido, correo, cargo, edad, id, password);
+                        if (!App.getTienda().addUsuario(user)){
+                            String contenido = "Registro Exitoso";
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setHeaderText(null);
+                            alert.setContentText(contenido);
+                            alert.showAndWait();
+                        } else {
+                            String contenido = "Este ID ya fue registrado";
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setHeaderText(null);
+                            alert.setContentText(contenido);
+                            alert.showAndWait();
+                        }
                     } else {
-                        String contenido = "Este ID ya fue registrado";
+                        String contenido = "Seleccione un cargo";
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setHeaderText(null);
                         alert.setContentText(contenido);
                         alert.showAndWait();
                     }
                 } else {
-                    String contenido = "Seleccione un cargo";
+                    String contenido = "Ingrese una edad valida";
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setHeaderText(null);
                     alert.setContentText(contenido);
                     alert.showAndWait();
                 }
-            } else {
-                String contenido = "Ingrese una edad valida";
+
+            } catch (NumberFormatException e){
+                String contenido = "Ingrese números en la edad";
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setHeaderText(null);
                 alert.setContentText(contenido);
                 alert.showAndWait();
             }
-
-        } catch (NumberFormatException e){
-            String contenido = "Ingrese números en la edad";
+        } else {
+            String contenido = "Rellene todos los campos";
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText(null);
             alert.setContentText(contenido);
             alert.showAndWait();
         }
+
+
 
     }
 

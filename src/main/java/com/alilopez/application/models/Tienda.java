@@ -143,7 +143,7 @@ public class Tienda {
 
     public boolean updateUsuario(String id, int edad, String pass){
         boolean flag = false;
-        for (int i = 0; i < clientes.size(); i++) {
+        for (int i = 0; i < usuarios.size(); i++) {
             String userID = usuarios.get(i).getIdUsuario();
             if (userID.equals(id) && !flag && edad >=15){
                 flag = true;
@@ -156,7 +156,7 @@ public class Tienda {
 
     public boolean updateUsuario(String id,  String pass){
         boolean flag = false;
-        for (int i = 0; i < clientes.size(); i++) {
+        for (int i = 0; i < usuarios.size(); i++) {
             String userID = usuarios.get(i).getIdUsuario();
             if (userID.equals(id) && !flag){
                 flag = true;
@@ -271,12 +271,33 @@ public class Tienda {
         }
         return aux;
     }
+    public ArrayList<VentaLocal> searchVentasLocales(LocalDate fecha, LocalDate fecha2){
+        ArrayList<VentaLocal> aux = new ArrayList<>();
+        for (int i = 0; i < ventasLocales.size(); i++) {
+            LocalDate date = ventasLocales.get(i).getFecha().toLocalDate();
+            if ((date.isEqual(fecha) || date.isAfter(fecha)) && (date.isEqual(fecha2) || date.isBefore(fecha2))) {
+                aux.add(ventasLocales.get(i));
+            }
+        }
+        return aux;
+    }
 
     public ArrayList<VentaNacional> searchVentasNacionales(LocalDate fecha){
         ArrayList<VentaNacional> aux = new ArrayList<>();
         for (int i = 0; i < ventaNacionales.size(); i++) {
             LocalDate date = ventaNacionales.get(i).getFecha().toLocalDate();
             if (date.equals(fecha)) {
+                aux.add(ventaNacionales.get(i));
+            }
+        }
+        return aux;
+    }
+
+    public ArrayList<VentaNacional> searchVentasNacionales(LocalDate fecha, LocalDate fecha2){
+        ArrayList<VentaNacional> aux = new ArrayList<>();
+        for (int i = 0; i < ventaNacionales.size(); i++) {
+            LocalDate date = ventaNacionales.get(i).getFecha().toLocalDate();
+            if ((date.isEqual(fecha) || date.isAfter(fecha)) && (date.isEqual(fecha2) || date.isBefore(fecha2))) {
                 aux.add(ventaNacionales.get(i));
             }
         }

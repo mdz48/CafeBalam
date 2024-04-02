@@ -27,23 +27,62 @@ public class BuscarVentaLocalController {
     private DatePicker datePicker;
 
     @FXML
+    private DatePicker datePicker2;
+
+    @FXML
     void onActionDatePicker(ActionEvent event) {
 
     }
 
     @FXML
     void onClickBuscarButton(MouseEvent event) {
-        ArrayList<VentaLocal> aux = App.getTienda().searchVentasLocales(datePicker.getValue());
-        StringBuilder contenido = new StringBuilder("Lista de Ventas en esa fecha:\n");
-        for (int i = 0; i < aux.size(); i++) {
-            contenido.append(aux.get(i)).append("\n");
+        if (!(datePicker.getValue() == null)) {
+            if (datePicker2.getValue() == null) {
+                ArrayList<VentaLocal> aux = App.getTienda().searchVentasLocales(datePicker.getValue());
+                if (!aux.isEmpty()) {
+                    StringBuilder contenido = new StringBuilder("Lista de Ventas en esa fecha:\n");
+                    for (int i = 0; i < aux.size(); i++) {
+                        contenido.append(aux.get(i)).append("\n");
+                    }
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Ventas Registrados");
+                    alert.setHeaderText(null);
+                    alert.setContentText(contenido.toString());
+                    alert.showAndWait();
+                } else {
+                    String contenido = "No existen ventas registradas en este día";
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setContentText(contenido);
+                    alert.showAndWait();
+                }
+            } else {
+                ArrayList<VentaLocal> aux = App.getTienda().searchVentasLocales(datePicker.getValue(), datePicker2.getValue());
+                if (!aux.isEmpty()) {
+                    StringBuilder contenido = new StringBuilder("Lista de Ventas en esas fechas:\n");
+                    for (int i = 0; i < aux.size(); i++) {
+                        contenido.append(aux.get(i)).append("\n");
+                    }
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Ventas Registrados");
+                    alert.setHeaderText(null);
+                    alert.setContentText(contenido.toString());
+                    alert.showAndWait();
+                } else {
+                    String contenido = "No existen ventas registradas en estos días";
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setContentText(contenido);
+                    alert.showAndWait();
+                }
+            }
+        } else {
+            String contenido = "Ingrese una fecha";
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText(contenido);
+            alert.showAndWait();
         }
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Ventas Registrados");
-        alert.setHeaderText(null);
-        alert.setContentText(contenido.toString());
-        alert.showAndWait();
     }
 
     @FXML

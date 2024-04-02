@@ -13,15 +13,29 @@
                 <Image url="@../../../img/fondo-home-cafebalam.png" />
             </image>
         </ImageView>
-        <Button fx:id="inventarioButton" layoutX="224.0" layoutY="375.0" mnemonicParsing="false" onMouseClicked="#onClickInventarioButton" prefHeight="51.0" prefWidth="139.0" text="Inventario">
-            <font>
-                <Font size="24.0" />
-            </font>
-        </Button>
-        <Button fx:id="exitButton" layoutX="222.0" layoutY="614.0" mnemonicParsing="false" onMouseClicked="#onMouseClickExitButton" prefHeight="33.0" prefWidth="142.0" text="Salir">
-            <font>
-                <Font size="24.0" />
-            </font>
-        </Button>
+      <Button fx:id="inventarioButton" layoutX="190.0" layoutY="327.0" mnemonicParsing="false" onMouseClicked="#onClickInventarioButton" prefHeight="94.0" prefWidth="206.0" text="Inventario">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="78.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/alt-de-inventario.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="exitButton" layoutX="190.0" layoutY="514.0" mnemonicParsing="false" onMouseClicked="#onMouseClickExitButton" prefHeight="94.0" prefWidth="206.0" text="Salir">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="78.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/salir-alt.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
     </children>
 </AnchorPane>

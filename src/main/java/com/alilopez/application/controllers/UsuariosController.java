@@ -87,7 +87,7 @@ public class UsuariosController {
         colCargo.setCellValueFactory(new PropertyValueFactory<>("cargo"));
         colEdad.setCellValueFactory(new PropertyValueFactory<>("edad"));
         colId.setCellValueFactory(new PropertyValueFactory<>("idUsuario"));
-
+        exitButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
         ObservableList<Usuario> usuarios = FXCollections.observableArrayList(App.getTienda().getUsuarios());
 
         usuariosTable.setItems(usuarios);

@@ -42,27 +42,43 @@ public class NewClienteController {
     }
     @FXML
     void onClickSaveButton(MouseEvent event) {
-
-        String nombre = nombreTextfield.getText();
-        String apellido = lastnameTextfield.getText();
-        String correo = correoTextField.getText();
-        long telefono = Long.parseLong(telefonoTextfield.getText());
-        float comprado = Integer.parseInt(compradoTextField.getText());
-        float gasto = Integer.parseInt(gastoTextfield.getText());
-        Cliente cliente = new Cliente(nombre, apellido, correo, telefono, gasto, comprado);
-        if (App.getTienda().addCliente(cliente)){
-            String contenido = "Este correo ya fue registrado";
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText(null);
-            alert.setContentText(contenido);
-            alert.showAndWait();
+        if (!(nombreTextfield.getText().isEmpty() || lastnameTextfield.getText().isEmpty() || correoTextField.getText().isEmpty() || telefonoTextfield.getText().isEmpty() || compradoTextField.getText().isEmpty() || gastoTextfield.getText().isEmpty())){
+            try {
+                String nombre = nombreTextfield.getText();
+                String apellido = lastnameTextfield.getText();
+                String correo = correoTextField.getText();
+                long telefono = Long.parseLong(telefonoTextfield.getText());
+                float comprado = Integer.parseInt(compradoTextField.getText());
+                float gasto = Integer.parseInt(gastoTextfield.getText());
+                Cliente cliente = new Cliente(nombre, apellido, correo, telefono, gasto, comprado);
+                if (App.getTienda().addCliente(cliente)){
+                    String contenido = "Este correo ya fue registrado";
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setContentText(contenido);
+                    alert.showAndWait();
+                } else {
+                    String contenido = "Se registró";
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setContentText(contenido);
+                    alert.showAndWait();
+                }
+            } catch (NumberFormatException e){
+                String contenido = "Ingrese número válidos porfavor";
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText(contenido);
+                alert.showAndWait();
+            }
         } else {
-            String contenido = "Se registró";
+            String contenido = "Rellene todos los campos";
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText(null);
             alert.setContentText(contenido);
             alert.showAndWait();
         }
+
     }
     @FXML
     void initialize() {

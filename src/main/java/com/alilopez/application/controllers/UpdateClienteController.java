@@ -2,6 +2,7 @@ package com.alilopez.application.controllers;
 
 import com.alilopez.application.App;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -35,13 +36,37 @@ public class UpdateClienteController {
     @FXML
     void onClickSaveButton(MouseEvent event) {
         if (idTextField.getText().isEmpty() || compradoTextField.getText().isEmpty() || gastadoTextField.getText().isEmpty()){
-            alertLabel.setText("Ingrese todos los campos");
+            String contenido = "Ingrese todos los campos";
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText(contenido);
+            alert.showAndWait();
+        } else{
+            try{
+                float comprado = Integer.parseInt(compradoTextField.getText());
+                float gastado = Integer.parseInt(gastadoTextField.getText());
+                if (App.getTienda().updateClient(idTextField.getText(), comprado, gastado)){
+                    String contenido = "Cambios guardados!";
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setContentText(contenido);
+                    alert.showAndWait();
+                } else {
+                    String contenido = "No se pudieron realizar lo cambios";
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setContentText(contenido);
+                    alert.showAndWait();
+                }
+            } catch (NumberFormatException e){
+                String contenido = "Ingrese número válidos";
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText(contenido);
+                alert.showAndWait();
+            }
         }
-        if (App.getTienda().updateClient(idTextField.getText(), Integer.parseInt(compradoTextField.getText()), Integer.parseInt(gastadoTextField.getText()))){
-            alertLabel.setText("Cambios Guardados!");
-        } else {
-            alertLabel.setText("No encontró el ID");
-        }
+
     }
 
     @FXML

@@ -38,8 +38,6 @@ public class InventarioController {
     @FXML
     private Button exitButton;
 
-    @FXML
-    private TableColumn<Cafe, String> colID;
 
     @FXML
     private TableColumn<Cafe, String> colNombre;
@@ -93,18 +91,13 @@ public class InventarioController {
     public void initialize() {
         colPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
         colPeso.setCellValueFactory(new PropertyValueFactory<>("peso"));
-        colID.setCellValueFactory(new PropertyValueFactory<>("idCafe"));
         colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         colCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
         colTipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
         colCosto.setCellValueFactory(new PropertyValueFactory<>("costo"));
-
         ObservableList<Cafe> productos = FXCollections.observableArrayList(App.getTienda().getProductos());
-
         productosTable.setItems(productos);
-        for (int i = 0; i < productos.size(); i++) {
-            System.out.println(productos.get(i).getIdCafe());
-        }
+        exitButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
     }
 
 }

@@ -36,26 +36,42 @@ public class NewVentaLocalController {
 
     @FXML
     void onClickSaveButton(MouseEvent event) {
-        float descuento;
-        double cantidad = Integer.parseInt(cantidadTxt.getText());
-        if (descuentoTxt.getText().isEmpty()){
-            descuento = 0;
-        } else {
-            descuento = Integer.parseInt(descuentoTxt.getText());
-        }
-        String tipo = tipoComboBox.getValue();
-        if (App.getTienda().addVentaLocal(cantidad, tipo, descuento)){
-            String contenido = "Venta Registrada";
+        if (cantidadTxt.getText().isEmpty() || tipoComboBox.getValue() == null) {
+            String contenido = "Rellene los campos mínimos";
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText(null);
             alert.setContentText(contenido);
             alert.showAndWait();
         } else {
-            String contenido = "No se pudo realizar la venta";
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText(null);
-            alert.setContentText(contenido);
-            alert.showAndWait();
+            try {
+                float descuento;
+                double cantidad = Integer.parseInt(cantidadTxt.getText());
+                if (descuentoTxt.getText().isEmpty()) {
+                    descuento = 0;
+                } else {
+                    descuento = Integer.parseInt(descuentoTxt.getText());
+                }
+                String tipo = tipoComboBox.getValue();
+                if (App.getTienda().addVentaLocal(cantidad, tipo, descuento)) {
+                    String contenido = "Venta Registrada";
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setContentText(contenido);
+                    alert.showAndWait();
+                } else {
+                    String contenido = "No se pudo realizar la venta";
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setContentText(contenido);
+                    alert.showAndWait();
+                }
+            } catch (NumberFormatException e){
+                String contenido = "Ingrese dígitos válidos";
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText(contenido);
+                alert.showAndWait();
+            }
         }
     }
 

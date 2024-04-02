@@ -23,9 +23,6 @@ public class HistorialController {
     private TableColumn<Caja, String> colIDVendedor;
 
     @FXML
-    private TableColumn<Caja, String> colIdCaja;
-
-    @FXML
     private TableColumn<Caja, Integer> colMonto;
 
     @FXML
@@ -52,8 +49,8 @@ public class HistorialController {
         colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         colIDVendedor.setCellValueFactory(new PropertyValueFactory<>("idVendedor"));
         colMonto.setCellValueFactory(new PropertyValueFactory<>("monto"));
-        colIdCaja.setCellValueFactory(new PropertyValueFactory<>("idCaja"));
         ObservableList<Caja> historial = FXCollections.observableArrayList(App.getTienda().getHistorial());
         historialTable.setItems(historial);
+        exitButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
     }
 }

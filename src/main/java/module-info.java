@@ -4,6 +4,7 @@ module com.alilopez.vererinaria {
     requires org.kordamp.bootstrapfx.core;
     requires com.gluonhq.charm.glisten;
     requires com.gluonhq.attach.display;
+    requires org.controlsfx.controls;
 
 
     opens com.alilopez.application to javafx.fxml;

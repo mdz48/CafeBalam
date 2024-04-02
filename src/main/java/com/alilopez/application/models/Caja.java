@@ -7,7 +7,6 @@ public class Caja {
     private LocalDateTime fecha;
     private String idVendedor;
     private double monto;
-    private String idCaja;
     private boolean status;
 
     public Caja(LocalDateTime fecha, String idVendedor, double monto) {
@@ -29,10 +28,6 @@ public class Caja {
 
     public double getMonto() {
         return monto;
-    }
-
-    public String getIdCaja() {
-        return idCaja;
     }
 
     public boolean isStatus() {
