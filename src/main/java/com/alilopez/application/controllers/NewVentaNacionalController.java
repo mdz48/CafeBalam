@@ -81,8 +81,6 @@ public class NewVentaNacionalController {
     }
     @FXML
     void initialize() {
-        closeButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
-        saveButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
         ObservableList<String> list = FXCollections.observableArrayList(App.getTienda().getTiposProductos());
         tipoComboBox.setItems(list);
     }

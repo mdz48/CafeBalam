@@ -53,14 +53,22 @@ public class NewProductController {
                 float peso = Integer.parseInt(pesoTextField.getText());
                 float cantidad = Integer.parseInt(cantidadTextField.getText());
                 Cafe cafe = new Cafe(precio, peso, nombre, cantidad, tipo, costo);
-                if (App.getTienda().addProducto(cafe)){
-                    String contenido = "Se agregó exitósamente";
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setHeaderText(null);
-                    alert.setContentText(contenido);
-                    alert.showAndWait();
+                if (cantidad > 0 && costo > 0 && precio > 0 && peso > 0) {
+                    if (App.getTienda().addProducto(cafe)) {
+                        String contenido = "Se agregó exitósamente";
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setHeaderText(null);
+                        alert.setContentText(contenido);
+                        alert.showAndWait();
+                    } else {
+                        String contenido = "Tipo de producto ya existente";
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setHeaderText(null);
+                        alert.setContentText(contenido);
+                        alert.showAndWait();
+                    }
                 } else {
-                    String contenido = "Tipo de producto ya existente";
+                    String contenido = "Ingrese números válidos";
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setHeaderText(null);
                     alert.setContentText(contenido);
@@ -84,9 +92,5 @@ public class NewProductController {
     }
     @FXML
     void initialize() {
-
-        closeButton.setStyle("-fx-font-size: 15px; -fx-font-weight: 700; -fx-alignment: center; -fx-background-color:  #cd812b;");
-
-        saveButton.setStyle("-fx-font-size: 15px; -fx-font-weight: 700; -fx-alignment: center;-fx-background-color:  #cd812b;");
     }
 }

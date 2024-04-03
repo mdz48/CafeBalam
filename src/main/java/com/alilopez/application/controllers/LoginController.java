@@ -65,8 +65,6 @@ public class LoginController {
 
     @FXML
     void initialize() {
-        loginButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
-        salirButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
     }
 
 }

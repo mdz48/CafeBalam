@@ -107,8 +107,6 @@ public class UpdateUsuarioController {
 
     @FXML
     void initialize() {
-        closeButton.setStyle("-fx-font-size: 15px; -fx-font-weight: 700; -fx-alignment: center; -fx-background-color:  #cd812b;");
-        saveButton.setStyle("-fx-font-size: 15px; -fx-font-weight: 700; -fx-alignment: center;-fx-background-color:  #cd812b;");
     }
 
 }

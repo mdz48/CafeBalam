@@ -98,7 +98,7 @@ public class ClientesController {
 
         ObservableList<Cliente> clientes = FXCollections.observableArrayList(App.getTienda().getClientes());
         clienteTable.setItems(clientes);
-        exitButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
+//        exitButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
 
     }
 

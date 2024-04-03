@@ -8,14 +8,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alilopez.application.controllers.VentasLocalesController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alilopez.application.controllers.VentasLocalesController">
     <children>
         <ImageView fitHeight="800.0" fitWidth="1280.0" pickOnBounds="true">
             <image>
                 <Image url="@../../../img/fondo-home-cafebalam.png" />
             </image>
         </ImageView>
-        <TableView fx:id="ventasLocalesTable" layoutX="194.0" layoutY="235.0" prefHeight="400.0" prefWidth="893.0" style="-fx-background-color: #026336; -fx-border-color: white;">
+        <TableView fx:id="ventasLocalesTable" layoutX="194.0" layoutY="235.0" prefHeight="400.0" prefWidth="893.0">
             <columns>
                 <TableColumn fx:id="colIdVenta" prefWidth="269.86669921875" text="ID Venta" />
                 <TableColumn fx:id="colMonto" prefWidth="152.5333251953125" text="Monto" />
@@ -25,28 +25,6 @@
                 <TableColumn fx:id="colIDVendedor" prefWidth="134.40008544921875" text="ID Vendedor" />
             </columns>
         </TableView>
-        <AnchorPane layoutX="598.0" layoutY="83.0" prefHeight="86.0" prefWidth="489.0" style="-fx-background-color: #6B400F;">
-            <children>
-                <Button fx:id="buscarButton" layoutX="75.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#onClickBuscarButton" prefHeight="29.0" prefWidth="91.0" style="-fx-background-color: #D69447;" text="Buscar" />
-                <Button fx:id="addButton" layoutX="211.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#onClickAddButton" prefHeight="29.0" prefWidth="91.0" style="-fx-background-color: #D69447;" text="Agregar" />
-                <Button fx:id="removeButton" layoutX="354.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#onClickRemoveButton" prefHeight="29.0" prefWidth="91.0" style="-fx-background-color: #D69447;" text="Eliminar" />
-            <ImageView fitHeight="30.0" fitWidth="38.0" layoutX="30.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../img/busqueda.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="30.0" fitWidth="38.0" layoutX="174.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../img/agregar.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="30.0" fitWidth="38.0" layoutX="313.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../img/basura.png" />
-               </image>
-            </ImageView>
-            </children>
-        </AnchorPane>
       <Button fx:id="exitButton" layoutX="529.0" layoutY="657.0" mnemonicParsing="false" onMouseClicked="#onMouseClickExitButton" prefHeight="64.0" prefWidth="206.0" text="Salir">
          <font>
             <Font size="24.0" />
@@ -59,5 +37,36 @@
             </ImageView>
          </graphic>
       </Button>
+      <AnchorPane layoutX="560.0" layoutY="103.0" prefHeight="92.0" prefWidth="527.0" style="-fx-background-color: #6B400F;">
+         <children>
+            <Button fx:id="buscarButton" layoutX="52.0" layoutY="27.0" mnemonicParsing="false" onMouseClicked="#onClickBuscarButton" prefHeight="29.0" prefWidth="111.0" text="Buscar">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../img/busqueda.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="addButton" layoutX="208.0" layoutY="27.0" mnemonicParsing="false" onMouseClicked="#onClickAddButton" prefHeight="29.0" prefWidth="111.0" text="Agregar">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../img/agregar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="removeButton" layoutX="369.0" layoutY="27.0" mnemonicParsing="false" onMouseClicked="#onClickRemoveButton" prefHeight="29.0" prefWidth="111.0" text="Eliminar">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../img/basura.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>

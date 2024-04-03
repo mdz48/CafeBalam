@@ -104,8 +104,6 @@ public class VentasLocalesController {
         colIDVendedor.setCellValueFactory(new PropertyValueFactory<>("idVendedor"));
         ObservableList<VentaLocal> ventas = FXCollections.observableArrayList(App.getTienda().getVentasLocales());
         ventasLocalesTable.setItems(ventas);
-        ventasLocalesTable.setStyle("-fx-background-color:  #026336;");
-        exitButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
     }
 
 

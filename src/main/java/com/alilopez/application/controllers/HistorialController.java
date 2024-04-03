@@ -51,6 +51,5 @@ public class HistorialController {
         colMonto.setCellValueFactory(new PropertyValueFactory<>("monto"));
         ObservableList<Caja> historial = FXCollections.observableArrayList(App.getTienda().getHistorial());
         historialTable.setItems(historial);
-        exitButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
     }
 }

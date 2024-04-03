@@ -116,8 +116,6 @@ public class NewUsuarioController {
     void initialize() {
         ObservableList <String> list = FXCollections.observableArrayList("Empleado", "Capturista");
         cargoComboBox.setItems(list);
-        closeButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
-        saveButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
     }
 
 }

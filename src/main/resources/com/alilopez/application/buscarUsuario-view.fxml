@@ -8,14 +8,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="334.0" prefWidth="583.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alilopez.application.controllers.BuscarUsuarioController">
+<AnchorPane prefHeight="334.0" prefWidth="583.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alilopez.application.controllers.BuscarUsuarioController">
    <children>
       <ImageView fitHeight="347.0" fitWidth="592.0" layoutX="-8.0" layoutY="-12.0" pickOnBounds="true">
          <image>
             <Image url="@../../../img/ventanasChatas.png" />
          </image>
       </ImageView>
-      <Button fx:id="closeButton" layoutX="317.0" layoutY="200.0" mnemonicParsing="false" onMouseClicked="#onClickCloseButton" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #cd812b;" text="Cerrar">
+      <Button fx:id="closeButton" layoutX="317.0" layoutY="200.0" mnemonicParsing="false" onMouseClicked="#onClickCloseButton" prefHeight="35.0" prefWidth="200.0" text="Cerrar">
          <font>
             <Font size="20.0" />
          </font>
@@ -26,7 +26,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Button fx:id="buscarButton" layoutX="67.0" layoutY="200.0" mnemonicParsing="false" onMouseClicked="#onClickBuscarButton" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #cd812b;" text="Buscar">
+      <Button fx:id="buscarButton" layoutX="67.0" layoutY="200.0" mnemonicParsing="false" onMouseClicked="#onClickBuscarButton" prefHeight="35.0" prefWidth="200.0" text="Buscar">
          <font>
             <Font size="20.0" />
          </font>

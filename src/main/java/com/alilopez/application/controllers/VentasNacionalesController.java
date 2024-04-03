@@ -99,7 +99,6 @@ public class VentasNacionalesController {
         colCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
         colCostoEnvio.setCellValueFactory(new PropertyValueFactory<>("costoEnvio"));
         colDireccion.setCellValueFactory(new PropertyValueFactory<>("direccion"));
-        exitButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
         ObservableList<VentaNacional> ventas = FXCollections.observableArrayList(App.getTienda().getVentaNacionales());
         ventasTable.setItems(ventas);
 

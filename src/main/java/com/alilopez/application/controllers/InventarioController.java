@@ -97,7 +97,6 @@ public class InventarioController {
         colCosto.setCellValueFactory(new PropertyValueFactory<>("costo"));
         ObservableList<Cafe> productos = FXCollections.observableArrayList(App.getTienda().getProductos());
         productosTable.setItems(productos);
-        exitButton.setStyle("-fx-font-size: 16px; -fx-font-weight: 900; -fx-alignment: center; -fx-background-color:  #cd812b;");
     }
 
 }

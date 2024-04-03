@@ -93,9 +93,6 @@ public class BuscarVentaNacionalController {
 
     @FXML
     void initialize() {
-        closeButton.setStyle("-fx-font-size: 15px; -fx-font-weight: 700; -fx-alignment: center; -fx-background-color:  #cd812b;");
-
-        buscarButton.setStyle("-fx-font-size: 15px; -fx-font-weight: 700; -fx-alignment: center;-fx-background-color:  #cd812b;");
     }
 
 }
