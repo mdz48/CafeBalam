@@ -10,6 +10,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class BuscarVentaLocalController {
@@ -35,20 +36,13 @@ public class BuscarVentaLocalController {
     }
 
     @FXML
-    void onClickBuscarButton(MouseEvent event) {
+    void onClickBuscarButton(MouseEvent event) throws IOException {
         if (!(datePicker.getValue() == null)) {
             if (datePicker2.getValue() == null) {
-                ArrayList<VentaLocal> aux = App.getTienda().searchVentasLocales(datePicker.getValue());
-                if (!aux.isEmpty()) {
-                    StringBuilder contenido = new StringBuilder("Lista de Ventas en esa fecha:\n");
-                    for (int i = 0; i < aux.size(); i++) {
-                        contenido.append(aux.get(i)).append("\n");
-                    }
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Ventas Registrados");
-                    alert.setHeaderText(null);
-                    alert.setContentText(contenido.toString());
-                    alert.showAndWait();
+                if (App.getTienda().searchVentasLocales(datePicker.getValue())){
+                    App.getStageView().close();
+                    App escena = new App();
+                    escena.changeScene("ventasLocalesEncontradas-view.fxml");
                 } else {
                     String contenido = "No existen ventas registradas en este día";
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -57,17 +51,10 @@ public class BuscarVentaLocalController {
                     alert.showAndWait();
                 }
             } else {
-                ArrayList<VentaLocal> aux = App.getTienda().searchVentasLocales(datePicker.getValue(), datePicker2.getValue());
-                if (!aux.isEmpty()) {
-                    StringBuilder contenido = new StringBuilder("Lista de Ventas en esas fechas:\n");
-                    for (int i = 0; i < aux.size(); i++) {
-                        contenido.append(aux.get(i)).append("\n");
-                    }
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Ventas Registrados");
-                    alert.setHeaderText(null);
-                    alert.setContentText(contenido.toString());
-                    alert.showAndWait();
+                if (App.getTienda().searchVentasLocales(datePicker.getValue(), datePicker2.getValue())){
+                    App.getStageView().close();
+                    App escena = new App();
+                    escena.changeScene("ventasLocalesEncontradas-view.fxml");
                 } else {
                     String contenido = "No existen ventas registradas en estos días";
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);

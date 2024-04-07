@@ -128,7 +128,7 @@ public class HomeAdminController {
     }
 
     @FXML
-    void onMouseClickExitButton(MouseEvent event) throws IOException, IOException {
+    void onMouseClickExitButton(MouseEvent event) throws IOException {
         if (App.getCaja().isStatus() == false) {
             App escena = new App();
             escena.changeScene("login-view.fxml");

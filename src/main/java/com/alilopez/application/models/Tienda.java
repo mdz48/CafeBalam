@@ -38,6 +38,21 @@ public class Tienda {
     public ArrayList<String> getTiposProductos() {
         return tiposProductos;
     }
+    public ArrayList<VentaLocal> VLencontradas = new ArrayList<>();
+    public ArrayList<VentaNacional> VNencontradas = new ArrayList<>();
+    public ArrayList<Caja> historialEncontrado = new ArrayList<>();
+
+    public ArrayList<VentaLocal> getVLencontradas() {
+        return VLencontradas;
+    }
+
+    public ArrayList<VentaNacional> getVNencontradas() {
+        return VNencontradas;
+    }
+
+    public ArrayList<Caja> getHistorialEncontrado() {
+        return historialEncontrado;
+    }
 
     public boolean closeCaja(LocalDateTime entrada, LocalDateTime salida){
         double total = 0;
@@ -261,7 +276,8 @@ public class Tienda {
         }
         return b;
     }
-    public ArrayList<VentaLocal> searchVentasLocales(LocalDate fecha){
+    public boolean searchVentasLocales(LocalDate fecha){
+        boolean flag = false;
         ArrayList<VentaLocal> aux = new ArrayList<>();
         for (int i = 0; i < ventasLocales.size(); i++) {
             LocalDate date = ventasLocales.get(i).getFecha().toLocalDate();
@@ -269,39 +285,89 @@ public class Tienda {
                 aux.add(ventasLocales.get(i));
             }
         }
-        return aux;
+        VLencontradas = aux;
+        if (!VLencontradas.isEmpty()) {
+            flag = true;
+        }
+        return flag;
     }
-    public ArrayList<VentaLocal> searchVentasLocales(LocalDate fecha, LocalDate fecha2){
+    public boolean searchVentasLocales(LocalDate fecha, LocalDate fecha2){
         ArrayList<VentaLocal> aux = new ArrayList<>();
+        boolean flag = false;
         for (int i = 0; i < ventasLocales.size(); i++) {
             LocalDate date = ventasLocales.get(i).getFecha().toLocalDate();
             if ((date.isEqual(fecha) || date.isAfter(fecha)) && (date.isEqual(fecha2) || date.isBefore(fecha2))) {
                 aux.add(ventasLocales.get(i));
             }
         }
-        return aux;
+        VLencontradas = aux;
+        if (!VLencontradas.isEmpty()) {
+            flag = true;
+        }
+        return flag;
     }
 
-    public ArrayList<VentaNacional> searchVentasNacionales(LocalDate fecha){
+    public boolean searchVentasNacionales(LocalDate fecha){
         ArrayList<VentaNacional> aux = new ArrayList<>();
+        boolean flag = false;
         for (int i = 0; i < ventaNacionales.size(); i++) {
             LocalDate date = ventaNacionales.get(i).getFecha().toLocalDate();
             if (date.equals(fecha)) {
                 aux.add(ventaNacionales.get(i));
             }
         }
-        return aux;
+        VNencontradas = aux;
+        if (!VNencontradas.isEmpty()) {
+            flag = true;
+        }
+        return flag;
     }
 
-    public ArrayList<VentaNacional> searchVentasNacionales(LocalDate fecha, LocalDate fecha2){
+    public boolean searchVentasNacionales(LocalDate fecha, LocalDate fecha2){
         ArrayList<VentaNacional> aux = new ArrayList<>();
+        boolean flag = false;
         for (int i = 0; i < ventaNacionales.size(); i++) {
             LocalDate date = ventaNacionales.get(i).getFecha().toLocalDate();
             if ((date.isEqual(fecha) || date.isAfter(fecha)) && (date.isEqual(fecha2) || date.isBefore(fecha2))) {
                 aux.add(ventaNacionales.get(i));
             }
         }
-        return aux;
+        VNencontradas = aux;
+        if (!VNencontradas.isEmpty()) {
+            flag = true;
+        }
+        return flag;
+    }
+
+    public boolean searchHistorial(LocalDate fecha){
+        ArrayList<Caja> aux = new ArrayList<>();
+        boolean flag = false;
+        for (int i = 0; i < historial.size(); i++) {
+            LocalDate date = historial.get(i).getFecha().toLocalDate();
+            if (date.equals(fecha)) {
+                aux.add(historial.get(i));
+            }
+        }
+        historialEncontrado = aux;
+        if (!historialEncontrado.isEmpty()) {
+            flag = true;
+        }
+        return flag;
+    }
+    public boolean searchHistorial(LocalDate fecha, LocalDate fecha2){
+        ArrayList<Caja> aux = new ArrayList<>();
+        boolean flag = false;
+        for (int i = 0; i < historial.size(); i++) {
+            LocalDate date = historial.get(i).getFecha().toLocalDate();
+            if ((date.isEqual(fecha) || date.isAfter(fecha)) && (date.isEqual(fecha2) || date.isBefore(fecha2))) {
+                aux.add(historial.get(i));
+            }
+        }
+        historialEncontrado = aux;
+        if (!historialEncontrado.isEmpty()) {
+            flag = true;
+        }
+        return flag;
     }
     public boolean deleteCliente(String correo){
         boolean flag = false;
@@ -320,6 +386,7 @@ public class Tienda {
         for (int i = 0; i < productos.size(); i++) {
             String productId = productos.get(i).getTipo();
             if (productId.equals(id) && !flag){
+                tiposProductos.remove(i);
                 productos.remove(i);
                 flag = true;
             }

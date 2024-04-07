@@ -2,7 +2,6 @@ package com.alilopez.application.controllers;
 
 import com.alilopez.application.App;
 import com.alilopez.application.models.VentaLocal;
-import com.alilopez.application.models.VentaNacional;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -14,7 +13,7 @@ import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class BuscarVentaNacionalController {
+public class BuscarHistorialController {
 
     @FXML
     private Label alertLabel;
@@ -40,22 +39,22 @@ public class BuscarVentaNacionalController {
     void onClickBuscarButton(MouseEvent event) throws IOException {
         if (!(datePicker.getValue() == null)) {
             if (datePicker2.getValue() == null) {
-                if (App.getTienda().searchVentasNacionales(datePicker.getValue())) {
+                if (App.getTienda().searchHistorial(datePicker.getValue())){
                     App.getStageView().close();
                     App escena = new App();
-                    escena.changeScene("ventasNacionalesEncontradas-view.fxml");
+                    escena.changeScene("historialEncontrado-view.fxml");
                 } else {
-                    String contenido = "No existen ventas registradas en estos días";
+                    String contenido = "No existen ventas registradas en este día";
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setHeaderText(null);
                     alert.setContentText(contenido);
                     alert.showAndWait();
                 }
             } else {
-                if (App.getTienda().searchVentasNacionales(datePicker.getValue(), datePicker2.getValue())) {
+                if (App.getTienda().searchHistorial(datePicker.getValue(), datePicker2.getValue())){
                     App.getStageView().close();
                     App escena = new App();
-                    escena.changeScene("ventasNacionalesEncontradas-view.fxml");
+                    escena.changeScene("historialEncontrado-view.fxml");
                 } else {
                     String contenido = "No existen ventas registradas en estos días";
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -65,7 +64,7 @@ public class BuscarVentaNacionalController {
                 }
             }
         } else {
-            String contenido = "Ingrese una fecha en el primer recuadro";
+            String contenido = "Ingrese una fecha";
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText(null);
             alert.setContentText(contenido);

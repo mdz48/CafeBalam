@@ -34,5 +34,18 @@
             </ImageView>
          </graphic>
       </Button>
+      <AnchorPane layoutX="590.0" layoutY="89.0" prefHeight="92.0" prefWidth="361.0" style="-fx-background-color: #6B400F;">
+         <children>
+            <Button fx:id="buscarButton" layoutX="216.0" layoutY="27.0" mnemonicParsing="false" onMouseClicked="#onClickBuscarButton" prefHeight="29.0" prefWidth="111.0" text="Buscar">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../img/busqueda.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>
