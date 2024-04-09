@@ -74,7 +74,15 @@ public class VentasNacionalesController {
 
     @FXML
     void onClickRemoveButton(MouseEvent event) {
-        App.newStage("removeVentaNacional-view", "App - Eliminar Venta Nacional");
+        if (App.getCaja().isStatus() == false) {
+            App.newStage("removeVentaNacional-view", "App - Eliminar Venta Nacional");
+        } else {
+            String contenido = "Cierre Caja para remover una Venta";
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText(contenido);
+            alert.showAndWait();
+        }
     }
 
     @FXML

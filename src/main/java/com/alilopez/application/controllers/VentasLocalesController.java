@@ -77,7 +77,15 @@ public class VentasLocalesController {
 
     @FXML
     void onClickRemoveButton(MouseEvent event) {
-        App.newStage("removeVentaLocal-view", "App - Eliminar Venta Local");
+        if (App.getCaja().isStatus() == false) {
+            App.newStage("removeVentaLocal-view", "App - Eliminar Venta Local");
+        } else {
+            String contenido = "Cierre Caja para remover una Venta";
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText(contenido);
+            alert.showAndWait();
+        }
     }
 
     @FXML

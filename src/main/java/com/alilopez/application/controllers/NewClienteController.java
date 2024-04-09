@@ -50,15 +50,23 @@ public class NewClienteController {
                 long telefono = Long.parseLong(telefonoTextfield.getText());
                 float comprado = Integer.parseInt(compradoTextField.getText());
                 float gasto = Integer.parseInt(gastoTextfield.getText());
-                Cliente cliente = new Cliente(nombre, apellido, correo, telefono, gasto, comprado);
-                if (App.getTienda().addCliente(cliente)){
-                    String contenido = "Este correo ya fue registrado";
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setHeaderText(null);
-                    alert.setContentText(contenido);
-                    alert.showAndWait();
+                if (comprado > 0 && gasto > 0) {
+                    Cliente cliente = new Cliente(nombre, apellido, correo, telefono, gasto, comprado);
+                    if (App.getTienda().addCliente(cliente)){
+                        String contenido = "Este correo ya fue registrado";
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setHeaderText(null);
+                        alert.setContentText(contenido);
+                        alert.showAndWait();
+                    } else {
+                        String contenido = "Se registró";
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setHeaderText(null);
+                        alert.setContentText(contenido);
+                        alert.showAndWait();
+                    }
                 } else {
-                    String contenido = "Se registró";
+                    String contenido = "Ingrese números válidos";
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setHeaderText(null);
                     alert.setContentText(contenido);
