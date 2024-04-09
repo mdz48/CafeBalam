@@ -4,6 +4,8 @@ import com.alilopez.application.App;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -54,21 +56,24 @@ public class Tienda {
         return historialEncontrado;
     }
 
-    public boolean closeCaja(LocalDateTime entrada, LocalDateTime salida){
+    public boolean closeCaja(LocalTime entrada, LocalTime salida){
         double total = 0;
         for (int i = 0; i < ventasLocales.size(); i++) {
             VentaLocal ventaAux = ventasLocales.get(i);
-            if (ventaAux.getFecha().isAfter(entrada) && ventaAux.getFecha().isBefore(salida)) {
+            System.out.println(entrada);
+            System.out.println(ventaAux.getHora());
+            System.out.println(salida);
+            if (ventaAux.getHora().isAfter(entrada) && ventaAux.getHora().isBefore(salida)) {
                 total += ventaAux.getMonto();
             }
         }
         for (int i = 0; i < ventaNacionales.size(); i++) {
             VentaNacional ventaAux = ventaNacionales.get(i);
-            if (ventaAux.getFecha().isAfter(entrada) && ventaAux.getFecha().isBefore(salida)){
+            if (ventaAux.getHora().isAfter(entrada) && ventaAux.getHora().isBefore(salida)){
                 total += ventaAux.getMonto();
             }
-        }
-        Caja caja = new Caja(LocalDateTime.now(), App.getUser().getId(), total);
+        };
+        Caja caja = new Caja(LocalDate.now(), entrada, salida, App.getUser().getId(), total);
         return historial.add(caja);
     }
 
@@ -106,9 +111,12 @@ public class Tienda {
                 productos.get(i).setCantidad(restante);
                 String id = UUID.randomUUID().toString();
                 double monto = (productos.get(i).getPrecio()*cantidad)-descuento;
-                LocalDateTime fecha = LocalDateTime.now();
+                LocalDate fecha = LocalDate.now();
+                LocalTime hora = LocalTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+                LocalTime horaVenta = LocalTime.parse(hora.format(formatter));
                 String idVendedor = App.getUser().getId();
-                VentaLocal ventaLocal = new VentaLocal(id, monto, fecha, cantidad, descuento, idVendedor);
+                VentaLocal ventaLocal = new VentaLocal(id, monto, fecha, cantidad, horaVenta , descuento, idVendedor);
                 ventasLocales.add(ventaLocal);
             }
         }
@@ -123,8 +131,11 @@ public class Tienda {
                 productos.get(i).setCantidad(restante);
                 String id = UUID.randomUUID().toString();
                 double monto = productos.get(i).getPrecio()*cantidad;
-                LocalDateTime fecha = LocalDateTime.now();
-                VentaNacional ventaNacional = new VentaNacional(id, monto, fecha, cantidad, costoEnvio, direccion);
+                LocalDate fecha = LocalDate.now();
+                LocalTime hora = LocalTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+                LocalTime horaVenta = LocalTime.parse(hora.format(formatter));
+                VentaNacional ventaNacional = new VentaNacional(id, monto, fecha, cantidad, horaVenta , costoEnvio, direccion);
                 ventaNacionales.add(ventaNacional);
             }
         }
@@ -211,8 +222,9 @@ public class Tienda {
         for (int i = 0; i < usuarios.size(); i++) {
             String userId = usuarios.get(i).getIdUsuario();
             if (userId.equals(id) && !flag){
-                b = usuarios.get(i).toString();
+                b = String.valueOf(usuarios.get(i));
                 flag = true;
+                i = usuarios.size();
             }
         }
         return b;
@@ -233,9 +245,19 @@ public class Tienda {
         for (int i = 0; i < ventasLocales.size(); i++) {
             String idVenta = ventasLocales.get(i).getIdVenta();
             if (idVenta.equals(id) && !flag){
-                ventasLocales.remove(i);
-                flag = true;
+                for (int j = 0; j < historial.size(); j++) {
+                    LocalTime hora = ventasLocales.get(i).getHora();
+                    LocalTime entrada = historial.get(j).getHoraEntrada();
+                    LocalTime salida = historial.get(j).getHoraSalida();
+                    if (hora.isAfter(entrada) && hora.isBefore(salida)) {
+                        historial.get(j).setMonto(historial.get(j).getMonto()-ventasLocales.get(i).getMonto());
+                        ventasLocales.remove(i);
+                        flag = true;
+                        j = historial.size();
+                    }
+                }
             }
+            i = ventaNacionales.size();
         }
         return flag;
     }
@@ -280,7 +302,7 @@ public class Tienda {
         boolean flag = false;
         ArrayList<VentaLocal> aux = new ArrayList<>();
         for (int i = 0; i < ventasLocales.size(); i++) {
-            LocalDate date = ventasLocales.get(i).getFecha().toLocalDate();
+            LocalDate date = ventasLocales.get(i).getFecha();
             if (date.equals(fecha)) {
                 aux.add(ventasLocales.get(i));
             }
@@ -295,7 +317,7 @@ public class Tienda {
         ArrayList<VentaLocal> aux = new ArrayList<>();
         boolean flag = false;
         for (int i = 0; i < ventasLocales.size(); i++) {
-            LocalDate date = ventasLocales.get(i).getFecha().toLocalDate();
+            LocalDate date = ventasLocales.get(i).getFecha();
             if ((date.isEqual(fecha) || date.isAfter(fecha)) && (date.isEqual(fecha2) || date.isBefore(fecha2))) {
                 aux.add(ventasLocales.get(i));
             }
@@ -311,7 +333,7 @@ public class Tienda {
         ArrayList<VentaNacional> aux = new ArrayList<>();
         boolean flag = false;
         for (int i = 0; i < ventaNacionales.size(); i++) {
-            LocalDate date = ventaNacionales.get(i).getFecha().toLocalDate();
+            LocalDate date = ventaNacionales.get(i).getFecha();
             if (date.equals(fecha)) {
                 aux.add(ventaNacionales.get(i));
             }
@@ -327,7 +349,7 @@ public class Tienda {
         ArrayList<VentaNacional> aux = new ArrayList<>();
         boolean flag = false;
         for (int i = 0; i < ventaNacionales.size(); i++) {
-            LocalDate date = ventaNacionales.get(i).getFecha().toLocalDate();
+            LocalDate date = ventaNacionales.get(i).getFecha();
             if ((date.isEqual(fecha) || date.isAfter(fecha)) && (date.isEqual(fecha2) || date.isBefore(fecha2))) {
                 aux.add(ventaNacionales.get(i));
             }
@@ -343,7 +365,7 @@ public class Tienda {
         ArrayList<Caja> aux = new ArrayList<>();
         boolean flag = false;
         for (int i = 0; i < historial.size(); i++) {
-            LocalDate date = historial.get(i).getFecha().toLocalDate();
+            LocalDate date = historial.get(i).getFecha();
             if (date.equals(fecha)) {
                 aux.add(historial.get(i));
             }
@@ -358,7 +380,7 @@ public class Tienda {
         ArrayList<Caja> aux = new ArrayList<>();
         boolean flag = false;
         for (int i = 0; i < historial.size(); i++) {
-            LocalDate date = historial.get(i).getFecha().toLocalDate();
+            LocalDate date = historial.get(i).getFecha();
             if ((date.isEqual(fecha) || date.isAfter(fecha)) && (date.isEqual(fecha2) || date.isBefore(fecha2))) {
                 aux.add(historial.get(i));
             }

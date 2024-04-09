@@ -68,10 +68,7 @@ public class LoginController {
 
     @FXML
     void initialize() {
-//        LocalTime time = LocalTime.now();
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-//        String formattedTime = time.format(formatter);
-//        System.out.println(formattedTime);
+
     }
 
 }
