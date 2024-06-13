@@ -52,7 +52,7 @@ public class NewClienteController {
                 float gasto = Integer.parseInt(gastoTextfield.getText());
                 if (comprado > 0 && gasto > 0) {
                     Cliente cliente = new Cliente(nombre, apellido, correo, telefono, gasto, comprado);
-                    if (App.getTienda().addCliente(cliente)){
+                    if (!App.getTienda().addCliente(cliente)){
                         String contenido = "Este correo ya fue registrado";
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setHeaderText(null);

@@ -57,6 +57,7 @@ public class InventarioController {
     @FXML
     void onClickAddButton(MouseEvent event) {
         App.newStage("newProduct-view", "App - Producto Nuevo");
+        productosTable.refresh();
     }
 
     @FXML
@@ -67,11 +68,13 @@ public class InventarioController {
     @FXML
     void onClickEditarButton(MouseEvent event) {
         App.newStage("updateProduct-view", "App - Actualizar Producto");
+        productosTable.refresh();
     }
 
     @FXML
     void onClickRemoveButton(MouseEvent event) {
         App.newStage("removeProduct-view", "App - Eliminar Producto");
+        productosTable.refresh();
     }
 
     @FXML

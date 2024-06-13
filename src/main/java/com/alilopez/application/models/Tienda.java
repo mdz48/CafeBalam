@@ -1,6 +1,7 @@
 package com.alilopez.application.models;
 
 import com.alilopez.application.App;
+import com.alilopez.application.conectors.DatabaseConnector;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -8,8 +9,13 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.UUID;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Tienda {
+    private DatabaseConnector dbConnector;
     private ArrayList<Cliente> clientes = new ArrayList<>();
     private ArrayList<Cafe> productos = new ArrayList<>();
     private ArrayList<String> tiposProductos = new ArrayList<>();
@@ -56,6 +62,10 @@ public class Tienda {
         return historialEncontrado;
     }
 
+    public Tienda() {
+        dbConnector = new DatabaseConnector();
+    }
+
     public boolean closeCaja(LocalTime entrada, LocalTime salida){
         double total = 0;
         for (int i = 0; i < ventasLocales.size(); i++) {
@@ -75,20 +85,62 @@ public class Tienda {
     }
 
 
-    public boolean addCliente(Cliente cliente){
+    public boolean addCliente(Cliente cliente) {
         boolean flag = false;
-        if (cliente.getComprado() >= 0 && cliente.getGastado() >= 0) {
-            for (int i = 0; i < clientes.size(); i++) {
-                if (cliente.getCorreo().equals(clientes.get(i).getCorreo()) && !flag) {
-                    flag = true;
-                }
-            }
-            if (!flag) {
+        String query = "INSERT INTO client (name, lastname, mail, phone, spent, bought) VALUES (?, ?, ?, ?, ?, ?)";
+        try (Connection connection = dbConnector.getConnection();
+             PreparedStatement ps = connection.prepareStatement(query)) {
+
+            ps.setString(1, cliente.getNombre());
+            ps.setString(2, cliente.getLastname());
+            ps.setString(3, cliente.getCorreo());
+            ps.setLong(4, cliente.getTelefono());
+            ps.setFloat(5, cliente.getGastado());
+            ps.setFloat(6, cliente.getComprado());
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                flag = true;
                 clientes.add(cliente);
             }
+//            flag = rowsAffected > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return flag;
     }
+
+
+    public Cliente getClienteByCorreo(String correo) {
+        Cliente cliente = null;
+        String query = "SELECT * FROM clientes WHERE correo = ?";
+        try (Connection connection = dbConnector.getConnection();
+             PreparedStatement ps = connection.prepareStatement(query)) {
+
+            ps.setString(1, correo);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                cliente = new Cliente(
+                        rs.getString("nombre"),
+                        rs.getString("lastname"),
+                        rs.getString("correo"),
+                        rs.getLong("telefono"),
+                        rs.getFloat("gastado"),
+                        rs.getFloat("comprado")
+                );
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return cliente;
+    }
+
+//    public void close() {
+//        dbConnector.closeConnection();
+//    }
     public boolean addUsuario(Usuario user){
         boolean flag = false;
         for (int i = 0; i < usuarios.size(); i++) {
@@ -163,21 +215,37 @@ public class Tienda {
         }
         return flag;
     }
-    public boolean updateClient(String correo, float comprado, float gastado){
+    public boolean updateClient(String correo, float comprado, float gastado) {
         boolean flag = false;
         if (comprado >= 0 && gastado >= 0) {
-            for (int i = 0; i < clientes.size(); i++) {
-                String userMail = clientes.get(i).getCorreo();
-                if (userMail.equals(correo) && !flag){
+            String query = "UPDATE client SET bought = ?, spent = ? WHERE mail = ?";
+            try (Connection connection = dbConnector.getConnection();
+                 PreparedStatement ps = connection.prepareStatement(query)) {
+
+                ps.setFloat(1, comprado);
+                ps.setFloat(2, gastado);
+                ps.setString(3, correo);
+
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected > 0) {
                     flag = true;
-                    clientes.get(i).setComprado(comprado);
-                    clientes.get(i).setGastado(gastado);
-                    i = clientes.size();
+                    for (int i = 0; i < clientes.size(); i++) {
+                        String userMail = clientes.get(i).getCorreo();
+                        if (userMail.equals(correo)) {
+                            clientes.get(i).setComprado(comprado);
+                            clientes.get(i).setGastado(gastado);
+                            break;
+                        }
+                    }
                 }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
         return flag;
     }
+
 
     public boolean updateUsuario(String id, int edad, String pass){
         boolean flag = false;
@@ -420,18 +488,40 @@ public class Tienda {
         }
         return flag;
     }
-    public boolean deleteCliente(String correo){
+    public boolean deleteCliente(String correo) {
         boolean flag = false;
-        for (int i = 0; i < clientes.size(); i++) {
-            String clienteMail = clientes.get(i).getCorreo();
-            if (clienteMail.equals(correo) && !flag){
-                clientes.remove(i);
+        String query = "DELETE FROM client WHERE mail = ?";
+
+        DatabaseConnector dbConnector = new DatabaseConnector(); // Instancia del conector
+        try (Connection connection = dbConnector.getConnection();
+             PreparedStatement ps = connection.prepareStatement(query)) {
+
+            ps.setString(1, correo);
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
                 flag = true;
-                i = clientes.size();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        if (flag) {
+            for (int i = 0; i < clientes.size(); i++) {
+                if (clientes.get(i).getCorreo().equals(correo)) {
+                    clientes.remove(i);
+                    break;
+                }
             }
         }
+
         return flag;
     }
+
+
+
+
 
     public boolean deleteProducto(String id){
         boolean flag = false;

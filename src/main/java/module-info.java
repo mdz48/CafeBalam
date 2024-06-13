@@ -5,6 +5,7 @@ module com.alilopez.vererinaria {
     requires com.gluonhq.charm.glisten;
     requires com.gluonhq.attach.display;
     requires org.controlsfx.controls;
+    requires java.sql;
 
 
     opens com.alilopez.application to javafx.fxml;
